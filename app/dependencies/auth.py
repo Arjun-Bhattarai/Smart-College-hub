@@ -7,7 +7,7 @@ from app.core.security import decode_access_token
 from app.db.redis import token_in_blocklist
 from app.db.main import get_session
 from sqlmodel.ext.asyncio.session import AsyncSession
-from app.services import AuthService
+from app.services.auth_service import AuthService
 from app.models.user import User
 
 from uuid import UUID

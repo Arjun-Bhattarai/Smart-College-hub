@@ -1,9 +1,9 @@
 from sqlmodel import select
 from sqlmodel.ext.asyncio.session import AsyncSession
 from uuid import UUID
-from app.models import User
-from app.schemas import UserCreate
-from app.core import generate_password_hash
+from app.models.user import User
+from app.schemas.auth_schema import UserCreate
+from app.core.security import generate_password_hash
 
 
 class AuthService:

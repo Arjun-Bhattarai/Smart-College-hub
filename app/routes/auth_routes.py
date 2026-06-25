@@ -4,10 +4,10 @@ from fastapi.responses import JSONResponse
 from datetime import datetime, timezone
 
 from app.schemas.auth_schema import UserCreate, user_model, UserLogin
-from app.services import AuthService
+from app.services.auth_service import AuthService
 from app.db.main import get_session
 from app.core.security import create_access_token, verify_password
-from app.dependency.auth import (
+from app.dependencies.auth import (
     RefreshTokenBearer,
     AccessTokenBearer,
     get_current_user,
