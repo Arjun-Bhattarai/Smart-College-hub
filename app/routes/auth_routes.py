@@ -1,36 +1,30 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel.ext.asyncio.session import AsyncSession
-from fastapi.responses import JSONResponse
-from datetime import datetime, timezone
 
-from app.schemas.auth_schema import UserCreate, user_model, UserLogin
+from app.schemas.auth_schema import UserCreate, UserLogin, UserResponse
 from app.services.auth_service import AuthService
 from app.db.main import get_session
 from app.core.security import create_access_token, verify_password
-from app.dependencies.auth import (
-    RefreshTokenBearer,
-    AccessTokenBearer,
-    get_current_user,
-    RoleChecker,    
-)
+from app.dependencies.auth import AccessTokenBearer, get_current_user, RoleChecker
 from app.db.redis import add_jti_to_blocklist
 
 auth_router = APIRouter()
 auth_service = AuthService()
-
 
 refresh_token_expires_delta = 3600 * 24 * 7
 role_checker = RoleChecker(["admin", "user"])
 
 
 
-@auth_router.post("/signup", response_model=user_model)
+@auth_router.post("/signup", response_model=UserResponse)
 async def signup(user: UserCreate, session: AsyncSession = Depends(get_session)):
 
     if await auth_service.user_exists(user.email, user.username, session):
-        raise HTTPException(400, "User already exists")
+        raise HTTPException(status_code=400, detail="User already exists")
 
-    return await auth_service.create_user(user, session)
+    db_user = await auth_service.create_user(user, session)
+
+    return UserResponse.model_validate(db_user)
 
 
 @auth_router.post("/login")
@@ -39,7 +33,7 @@ async def login_users(user: UserLogin, session: AsyncSession = Depends(get_sessi
     db_user = await auth_service.get_user_by_email(user.email, session)
 
     if not db_user or not verify_password(user.password, db_user.password):
-        raise HTTPException(401, "Invalid credentials")
+        raise HTTPException(status_code=401, detail="Invalid credentials")
 
     access_token = create_access_token(
         data={
@@ -66,8 +60,10 @@ async def login_users(user: UserLogin, session: AsyncSession = Depends(get_sessi
         "access_token": access_token,
         "refresh_token": refresh_token,
         "user": {
+            "uid": str(db_user.uid),
             "email": db_user.email,
             "username": db_user.username,
+            "role": db_user.role,
         },
     }
 
@@ -82,10 +78,9 @@ async def logout(credentials=Depends(AccessTokenBearer())):
 
     return {"message": "Logout successful"}
 
-
-@auth_router.get("/profile")
+@auth_router.get("/profile", response_model=UserResponse)
 async def me(
     user=Depends(get_current_user),
     _: bool = Depends(role_checker),
 ):
-    return user
+    return UserResponse.model_validate(user)

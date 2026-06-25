@@ -33,42 +33,24 @@ class User(SQLModel, table=True):
     last_name: Optional[str] = Field(default=None, max_length=100)
 
     role: str = Field(
-        sa_column=Column(
-            sa.String,
-            nullable=False,
-            server_default="user"
-        )
+        sa_column=Column(sa.String, nullable=False, server_default="user")
     )
 
     is_verified: bool = Field(
-        sa_column=Column(
-            sa.Boolean,
-            nullable=False,
-            server_default=sa.false()
-        )
+        sa_column=Column(sa.Boolean, nullable=False, server_default=sa.false())
     )
 
     created_at: datetime = Field(
-        sa_column=Column(
-            sa.DateTime,
-            nullable=False,
-            server_default=sa.func.now()
-        )
+        sa_column=Column(sa.DateTime, server_default=sa.func.now(), nullable=False)
     )
 
     updated_at: datetime = Field(
         sa_column=Column(
             sa.DateTime,
-            nullable=False,
             server_default=sa.func.now(),
-            onupdate=sa.func.now()
+            onupdate=sa.func.now(),
+            nullable=False
         )
     )
 
-    password: str = Field(exclude=True, nullable=False)
-
-    def __repr__(self):
-        return (
-            f"User(username={self.username}, "
-            f"email={self.email}, role={self.role})"
-        )
+    password: str = Field(nullable=False)
