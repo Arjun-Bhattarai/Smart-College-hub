@@ -12,7 +12,7 @@ auth_router = APIRouter()
 auth_service = AuthService()
 
 refresh_token_expires_delta = 3600 * 24 * 7
-role_checker = RoleChecker(["admin", "user"])
+role_checker = RoleChecker(["admin", "student", "teacher"])
 
 
 

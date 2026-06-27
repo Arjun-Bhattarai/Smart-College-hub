@@ -1,44 +1,116 @@
 from uuid import UUID
-from fastapi import APIRouter
 
-challenge_routes = APIRouter()
+from fastapi import APIRouter, Depends, HTTPException
+from sqlmodel.ext.asyncio.session import AsyncSession
+
+from app.db.main import get_session
+from app.dependencies.auth import (
+    get_current_user,
+    RoleChecker,
+)
+from app.models.user import User
+from app.schemas.challenge_schema import ChallengeCreate
+from app.schemas.submission_schema import SubmissionCreate
+from app.services.challenge_service import ChallengeService
+
+challenge_routes = APIRouter(tags=["Challenges"])
+
+challenge_service = ChallengeService()
+admin_only = RoleChecker(["admin"])
 
 
-@challenge_routes.post("/challenges")
-async def create_challenge():
-    pass
+@challenge_routes.post("/challenges", dependencies=[Depends(admin_only)])
+async def create_challenge(
+    challenge: ChallengeCreate,
+    session: AsyncSession = Depends(get_session),
+):
+    return await challenge_service.create_challenge(
+        session,
+        challenge,
+    )
 
 
 @challenge_routes.get("/challenges")
-async def get_challenges():
-    pass
+async def get_challenges(
+    current_user: User = Depends(get_current_user),
+    session: AsyncSession = Depends(get_session),
+):
+    return await challenge_service.get_all_challenges(session)
 
 
 @challenge_routes.get("/challenges/{challenge_id}")
 async def get_challenge(
-    challenge_id: UUID
+    challenge_id: UUID,
+    current_user: User = Depends(get_current_user),
+    session: AsyncSession = Depends(get_session),
 ):
-    pass
+    challenge = await challenge_service.get_challenge(
+        session,
+        challenge_id,
+    )
+
+    if challenge is None:
+        raise HTTPException(
+            status_code=404,
+            detail="Challenge not found",
+        )
+
+    return challenge
 
 
-@challenge_routes.post(
-    "/challenges/{challenge_id}/submit"
-)
+@challenge_routes.post("/challenges/{challenge_id}/submit")
 async def submit_challenge(
-    challenge_id: UUID
+    challenge_id: UUID,
+    submission: SubmissionCreate,
+    current_user: User = Depends(get_current_user),
+    session: AsyncSession = Depends(get_session),
 ):
-    pass
+    challenge = await challenge_service.get_challenge(
+        session,
+        challenge_id,
+    )
+
+    if challenge is None:
+        raise HTTPException(
+            status_code=404,
+            detail="Challenge not found",
+        )
+
+    return await challenge_service.submit_challenge(
+        session,
+        current_user.uid,
+        challenge_id,
+        submission,
+    )
 
 
 @challenge_routes.get("/leaderboard")
-async def leaderboard():
-    pass
+async def leaderboard(
+    current_user: User = Depends(get_current_user),
+    session: AsyncSession = Depends(get_session),
+):
+    return await challenge_service.get_leaderboard(session)
+
+
+@challenge_routes.get("/my-submissions")
+async def my_submissions(
+    current_user: User = Depends(get_current_user),
+    session: AsyncSession = Depends(get_session),
+):
+    return await challenge_service.get_user_submissions(
+        session,
+        current_user.uid,
+    )
 
 
 @challenge_routes.get(
-    "/users/{user_id}/submissions"
+    "/users/{user_id}/submissions", dependencies=[Depends(admin_only)]
 )
 async def get_user_submissions(
-    user_id: UUID
+    user_id: UUID,
+    session: AsyncSession = Depends(get_session),
 ):
-    pass
+    return await challenge_service.get_user_submissions(
+        session,
+        user_id,
+    )
