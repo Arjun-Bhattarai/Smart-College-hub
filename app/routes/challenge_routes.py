@@ -13,7 +13,7 @@ from app.schemas.challenge_schema import ChallengeCreate
 from app.schemas.submission_schema import SubmissionCreate
 from app.services.challenge_service import ChallengeService
 
-challenge_routes = APIRouter(tags=["Challenges"])
+challenge_routes = APIRouter()
 
 challenge_service = ChallengeService()
 admin_only = RoleChecker(["admin"])
