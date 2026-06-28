@@ -5,10 +5,8 @@ from pydantic import BaseModel
 
 
 class SubmissionCreate(BaseModel):
-    challenge_id: UUID
     code: str
     language: str
-
 
 class SubmissionResponse(BaseModel):
     id: UUID

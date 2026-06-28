@@ -84,3 +84,5 @@ async def me(
     _: bool = Depends(role_checker),
 ):
     return UserResponse.model_validate(user)
+
+

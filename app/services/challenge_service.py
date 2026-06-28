@@ -1,5 +1,8 @@
+from app.models.challenge import CodingChallenge
 from app.repositories.challenge_repository import ChallengeRepository
 from app.repositories.submission_repository import SubmissionRepository
+from app.models.submission import Submission
+
 
 
 class ChallengeService:
@@ -13,9 +16,13 @@ class ChallengeService:
         session,
         challenge,
     ):
+        db_challenge = CodingChallenge(
+            **challenge.model_dump()
+        )
+
         return await self.challenge_repo.create(
             session,
-            challenge,
+            db_challenge,
         )
 
     async def get_all_challenges(
@@ -36,18 +43,30 @@ class ChallengeService:
             challenge_id,
         )
 
-    async def submit_challenge(
-        self,
-        session,
-        challenge_id,
-        submission,
-    ):
-        return await self.submission_repo.create(
-            session,
-            submission,
-        )
 
-    async def get_user_submissions(
+
+from app.models.submission import Submission
+
+
+async def submit_challenge(
+    self,
+    session,
+    user_id,
+    challenge_id,
+    submission,
+):
+    db_submission = Submission(
+        user_id=user_id,
+        challenge_id=challenge_id,
+        code=submission.code,
+        language=submission.language,
+    )
+
+    return await self.submission_repo.create(
+        session,
+        db_submission,
+    )
+async def get_user_submissions(
         self,
         session,
         user_id,
@@ -57,7 +76,7 @@ class ChallengeService:
             user_id,
         )
 
-    async def get_leaderboard(
+async def get_leaderboard(
         self,
         session,
     ):
