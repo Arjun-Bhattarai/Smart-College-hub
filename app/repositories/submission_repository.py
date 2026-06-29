@@ -25,9 +25,11 @@ class SubmissionRepository:
         session: AsyncSession,
         user_id: UUID,
     ) -> list[Submission]:
-        statement = select(Submission).where(
-            Submission.user_id == user_id
-        )
+        statement = (
+    select(Submission)
+    .where(Submission.user_id == user_id)
+    .order_by(Submission.submitted_at.desc())
+)
 
         result = await session.exec(statement)
 
@@ -38,10 +40,11 @@ class SubmissionRepository:
         session: AsyncSession,
         challenge_id: UUID,
     ) -> list[Submission]:
-        statement = select(Submission).where(
-            Submission.challenge_id == challenge_id
+        statement = (
+            select(Submission)
+            .where(Submission.challenge_id == challenge_id)
+            .order_by(Submission.submitted_at.desc())
         )
-
         result = await session.exec(statement)
 
         return result.all()
@@ -62,15 +65,16 @@ class SubmissionRepository:
     async def get_leaderboard(
         self,
         session: AsyncSession,
-    ):
+    )->list:
         statement = (
-            select(
-                Submission.user_id,
-                func.sum(Submission.score).label("points"),
-            )
-            .group_by(Submission.user_id)
-            .order_by(desc("points"))
-        )
+    select(
+        Submission.user_id,
+        func.sum(Submission.score).label("points"),
+    )
+    .group_by(Submission.user_id)
+    .order_by(desc("points"))
+    .limit(10)
+)
 
         result = await session.exec(statement)
 
