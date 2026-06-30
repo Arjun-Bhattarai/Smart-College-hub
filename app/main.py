@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from app.routes.auth_routes import auth_router
-from app.routes.token_route import token_router
-from app.routes.challenge_routes import challenge_routes
+from app.routes.token_routes import token_router
+from app.routes.coding_challenge_routes import challenge_routes
 
 app = FastAPI(
     title="Smart College Hub API",

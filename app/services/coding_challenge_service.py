@@ -1,9 +1,9 @@
 from sqlmodel.ext.asyncio.session import AsyncSession
 from uuid import UUID
 
-from app.models.challenge import CodingChallenge
+from app.models.coding_challenge import CodingChallenge
 from app.models.submission import Submission
-from app.repositories.challenge_repository import ChallengeRepository
+from app.repositories.coding_challenge_repository import ChallengeRepository
 from app.repositories.submission_repository import SubmissionRepository
 
 

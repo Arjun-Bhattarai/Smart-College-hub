@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel.ext.asyncio.session import AsyncSession
 
-from app.schemas.auth_schema import UserCreate, UserLogin, UserResponse
+from app.schemas.user_schema import UserCreate, UserLogin, UserResponse
 from app.services.auth_service import AuthService
-from app.db.main import get_session
+from app.db.session import get_session
 from app.core.security import create_access_token, verify_password
 from app.dependencies.auth import AccessTokenBearer, get_current_user, RoleChecker
 from app.db.redis import add_jti_to_blocklist

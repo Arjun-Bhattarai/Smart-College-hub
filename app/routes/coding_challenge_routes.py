@@ -3,15 +3,15 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel.ext.asyncio.session import AsyncSession
 
-from app.db.main import get_session
+from app.db.session import get_session
 from app.dependencies.auth import (
     get_current_user,
     RoleChecker,
 )
 from app.models.user import User
-from app.schemas.challenge_schema import ChallengeCreate
+from app.schemas.coding_challenge_schema import ChallengeCreate
 from app.schemas.submission_schema import SubmissionCreate
-from app.services.challenge_service import ChallengeService
+from app.services.coding_challenge_service import ChallengeService
 
 
 challenge_routes = APIRouter()

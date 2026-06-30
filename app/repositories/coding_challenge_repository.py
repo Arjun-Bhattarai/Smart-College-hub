@@ -3,7 +3,7 @@ from uuid import UUID
 from sqlmodel import select
 from sqlmodel.ext.asyncio.session import AsyncSession
 
-from app.models.challenge import CodingChallenge
+from app.models.coding_challenge import CodingChallenge
 
 
 class ChallengeRepository:

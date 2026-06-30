@@ -5,7 +5,7 @@ from typing import Any, List
 
 from app.core.security import decode_access_token
 from app.db.redis import token_in_blocklist
-from app.db.main import get_session
+from app.db.session import get_session
 from sqlmodel.ext.asyncio.session import AsyncSession
 from app.services.auth_service import AuthService
 from app.models.user import User

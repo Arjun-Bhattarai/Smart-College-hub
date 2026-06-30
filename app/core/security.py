@@ -69,7 +69,7 @@ def decode_access_token(token: str) -> dict:
             )
 
         try:
-            payload["uid"] = str(UUID(uid))  # ✅ normalize again
+            payload["uid"] = str(UUID(uid))  
         except Exception:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
