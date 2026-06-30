@@ -6,8 +6,10 @@ from alembic import context
 from app.config import config as settings
 from sqlmodel import SQLModel
 from app.models.user import User
-from app.models.challenge import CodingChallenge
+from app.models.coding_challenge import CodingChallenge
 from app.models.submission import Submission
+from app.models.collaboration import Collaboration
+from app.models.collaboration_membership import CollaborationMembership
 
 config = context.config
 
