@@ -7,6 +7,7 @@ from app.db.session import get_session
 from app.core.security import create_access_token, verify_password
 from app.dependencies.auth import AccessTokenBearer, get_current_user, RoleChecker
 from app.db.redis import add_jti_to_blocklist
+from app.dependencies.collaboration import get_collaboration_service
 
 auth_router = APIRouter()
 auth_service = AuthService()

@@ -1,4 +1,5 @@
 from uuid import UUID
+
 from sqlmodel import select
 from sqlmodel.ext.asyncio.session import AsyncSession
 
@@ -43,3 +44,12 @@ class CollaborationMembershipRepository:
     ):
         await self.session.delete(membership)
         await self.session.commit()
+
+    async def update_member(
+        self,
+        membership: CollaborationMembership,
+    ):
+        self.session.add(membership)
+        await self.session.commit()
+        await self.session.refresh(membership)
+        return membership

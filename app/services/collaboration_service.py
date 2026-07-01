@@ -1,10 +1,17 @@
 from fastapi import HTTPException
+
 from app.models.collaboration import Collaboration
+from app.models.collaboration_membership import CollaborationMembership
 
 
 class CollaborationService:
-    def __init__(self, repository):
+    def __init__(
+        self,
+        repository,
+        membership_repository,
+    ):
         self.repository = repository
+        self.membership_repository = membership_repository
 
     async def create_collaboration(self, data, current_user):
         collaboration = Collaboration(
@@ -12,7 +19,17 @@ class CollaborationService:
             created_by=current_user.uid,
         )
 
-        return await self.repository.create(collaboration)
+        collaboration = await self.repository.create(collaboration)
+
+        owner = CollaborationMembership(
+            collaboration_id=collaboration.id,
+            user_id=current_user.uid,
+            role="owner",
+        )
+
+        await self.membership_repository.add_member(owner)
+
+        return collaboration
 
     async def get_collaborations(self):
         return await self.repository.get_all()
@@ -83,4 +100,6 @@ class CollaborationService:
 
         await self.repository.delete(collaboration)
 
-        return {"message": "Collaboration deleted successfully"}
+        return {
+            "message": "Collaboration deleted successfully"
+        }

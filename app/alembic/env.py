@@ -10,6 +10,7 @@ from app.models.coding_challenge import CodingChallenge
 from app.models.submission import Submission
 from app.models.collaboration import Collaboration
 from app.models.collaboration_membership import CollaborationMembership
+from app.models.collaboration_join_request import CollaborationJoinRequest
 
 config = context.config
 
