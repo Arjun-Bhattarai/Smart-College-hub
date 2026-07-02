@@ -1,105 +1,127 @@
-from fastapi import HTTPException
+from uuid import UUID
+
+from fastapi import HTTPException, status
 
 from app.models.collaboration import Collaboration
 from app.models.collaboration_membership import CollaborationMembership
+from app.repositories.collaboration_membership_repository import (
+    CollaborationMembershipRepository,
+)
+from app.repositories.collaboration_repository import (
+    CollaborationRepository,
+)
 
 
 class CollaborationService:
     def __init__(
         self,
-        repository,
-        membership_repository,
+        collaboration_repository: CollaborationRepository,
+        membership_repository: CollaborationMembershipRepository,
     ):
-        self.repository = repository
+        self.collaboration_repository = collaboration_repository
         self.membership_repository = membership_repository
 
-    async def create_collaboration(self, data, current_user):
+    async def create_collaboration(
+        self,
+        data,
+        current_user,
+    ):
         collaboration = Collaboration(
-            **data.model_dump(),
+            title=data.title,
+            description=data.description,
             created_by=current_user.uid,
         )
 
-        collaboration = await self.repository.create(collaboration)
-
-        owner = CollaborationMembership(
-            collaboration_id=collaboration.id,
-            user_id=current_user.uid,
-            role="owner",
+        collaboration = await self.collaboration_repository.create(
+            collaboration
         )
 
-        await self.membership_repository.add_member(owner)
+        membership = CollaborationMembership(
+            collaboration_id=collaboration.id,
+            user_id=current_user.uid,
+        )
+
+        await self.membership_repository.add_member(
+            membership
+        )
 
         return collaboration
 
     async def get_collaborations(self):
-        return await self.repository.get_all()
+        return await self.collaboration_repository.get_all()
 
-    async def get_collaboration(self, collaboration_id):
-        collaboration = await self.repository.get_by_id(collaboration_id)
+    async def get_collaboration(
+        self,
+        collaboration_id: UUID,
+    ):
+        collaboration = await self.collaboration_repository.get_by_id(
+            collaboration_id
+        )
 
         if not collaboration:
             raise HTTPException(
-                status_code=404,
-                detail="Collaboration not found",
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="Collaboration not found.",
             )
 
         return collaboration
 
     async def update_collaboration(
         self,
-        collaboration_id,
+        collaboration_id: UUID,
         data,
         current_user,
     ):
-        collaboration = await self.repository.get_by_id(collaboration_id)
+        collaboration = await self.collaboration_repository.get_by_id(
+            collaboration_id
+        )
 
         if not collaboration:
             raise HTTPException(
-                status_code=404,
-                detail="Collaboration not found",
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="Collaboration not found.",
             )
 
         if collaboration.created_by != current_user.uid:
             raise HTTPException(
-                status_code=403,
-                detail="Permission denied",
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail="Only the owner can update this collaboration.",
             )
 
-        if data.title is not None:
-            collaboration.title = data.title
+        update_data = data.model_dump(exclude_unset=True)
 
-        if data.description is not None:
-            collaboration.description = data.description
+        for key, value in update_data.items():
+            setattr(collaboration, key, value)
 
-        if data.max_members is not None:
-            collaboration.max_members = data.max_members
-
-        if data.required_skills is not None:
-            collaboration.required_skills = data.required_skills
-
-        return await self.repository.update(collaboration)
+        return await self.collaboration_repository.update(
+            collaboration
+        )
 
     async def delete_collaboration(
         self,
-        collaboration_id,
+        collaboration_id: UUID,
         current_user,
     ):
-        collaboration = await self.repository.get_by_id(collaboration_id)
+        collaboration = await self.collaboration_repository.get_by_id(
+            collaboration_id
+        )
 
         if not collaboration:
             raise HTTPException(
-                status_code=404,
-                detail="Collaboration not found",
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="Collaboration not found.",
             )
 
         if collaboration.created_by != current_user.uid:
             raise HTTPException(
-                status_code=403,
-                detail="Permission denied",
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail="Only the owner can delete this collaboration.",
             )
 
-        await self.repository.delete(collaboration)
+        await self.collaboration_repository.delete(
+            collaboration
+        )
 
         return {
-            "message": "Collaboration deleted successfully"
+            "message": "Collaboration deleted successfully."
         }
