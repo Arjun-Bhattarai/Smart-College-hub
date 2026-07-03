@@ -4,3 +4,5 @@ __pycache__/
 .git/
 __pycache__/
 *.py[cod]
+/docs/
+/scripts/

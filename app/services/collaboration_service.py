@@ -29,6 +29,8 @@ class CollaborationService:
         collaboration = Collaboration(
             title=data.title,
             description=data.description,
+            max_members=data.max_members,
+            required_skills=data.required_skills,
             created_by=current_user.uid,
         )
 

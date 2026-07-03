@@ -1,9 +1,8 @@
-from datetime import datetime
-from uuid import UUID, uuid4
-
-from sqlalchemy import Column
-from sqlalchemy.dialects.postgresql import JSONB
 from sqlmodel import SQLModel, Field
+from sqlalchemy import Column, ForeignKey
+from sqlalchemy.dialects.postgresql import JSONB, UUID as PGUUID
+from uuid import uuid4, UUID
+from datetime import datetime
 
 
 class Collaboration(SQLModel, table=True):
@@ -11,23 +10,13 @@ class Collaboration(SQLModel, table=True):
 
     id: UUID = Field(
         default_factory=uuid4,
-        primary_key=True,
-        index=True,
+        sa_column=Column(PGUUID(as_uuid=True), primary_key=True),
     )
 
-    title: str = Field(
-        max_length=100,
-    )
+    title: str
+    description: str | None = None
 
-    description: str | None = Field(
-        default=None,
-        max_length=500,
-    )
-
-    max_members: int | None = Field(
-        default=None,
-        ge=1,
-    )
+    max_members: int | None = None
 
     required_skills: list[str] = Field(
         default_factory=list,
@@ -35,14 +24,19 @@ class Collaboration(SQLModel, table=True):
     )
 
     created_by: UUID = Field(
-        foreign_key="users.uid",
-        index=True,
+        sa_column=Column(
+            PGUUID(as_uuid=True),
+            ForeignKey("users.uid"),
+            nullable=False
+        )
     )
 
     created_at: datetime = Field(
         default_factory=datetime.utcnow,
+        sa_column=Column(nullable=False)
     )
 
     updated_at: datetime = Field(
         default_factory=datetime.utcnow,
+        sa_column=Column(nullable=False)
     )
