@@ -1,18 +1,28 @@
-from sqlalchemy.ext.asyncio import create_async_engine, AsyncEngine
-from sqlmodel.ext.asyncio.session import AsyncSession
-from sqlmodel import SQLModel
-from app.core.config import config
+from sqlalchemy.ext.asyncio import create_async_engine
 from sqlalchemy.orm import sessionmaker
+from sqlmodel import SQLModel
+from sqlmodel.ext.asyncio.session import AsyncSession
 
-engine = create_async_engine(config.DATABASE_URL, echo=True)
+from app.core.config import settings
 
-# Move async_sessionmaker outside get_session — no need to recreate it on every request
-Session =sessionmaker(bind=engine, class_=AsyncSession, expire_on_commit=False)
+# Create async engine
+engine = create_async_engine(
+    settings.DATABASE_URL,
+    echo=True
+)
+
+Session = sessionmaker(
+    bind=engine,
+    class_=AsyncSession,
+    expire_on_commit=False
+)
 
 async def init_db():
     async with engine.begin() as conn:
         await conn.run_sync(SQLModel.metadata.create_all)
 
-async def get_session() -> AsyncSession:
+async def get_session():
     async with Session() as session:
         yield session
+
+#print("DATABASE_URL =", settings.DATABASE_URL)

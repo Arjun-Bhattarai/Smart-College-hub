@@ -82,8 +82,6 @@ async def logout(credentials=Depends(AccessTokenBearer())):
 @auth_router.get("/profile", response_model=UserResponse)
 async def me(
     user=Depends(get_current_user),
-    _: bool = Depends(role_checker),
 ):
     return UserResponse.model_validate(user)
-
 

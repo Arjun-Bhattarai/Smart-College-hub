@@ -4,8 +4,7 @@ from fastapi import HTTPException, status
 import jwt
 import uuid
 from uuid import UUID
-from app.core.config import config
-
+from app.core.config import settings as config
 password_context = CryptContext(schemes=["bcrypt"])
 
 ACCESS_TOKEN_EXPIRE = 3600

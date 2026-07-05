@@ -4,10 +4,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel.ext.asyncio.session import AsyncSession
 
 from app.db.session import get_session
-from app.dependencies.auth import (
-    get_current_user,
-    RoleChecker,
-)
+from app.dependencies.auth import get_current_user, RoleChecker
 from app.models.user import User
 from app.schemas.coding_challenge_schema import ChallengeCreate
 from app.schemas.submission_schema import SubmissionCreate
@@ -18,7 +15,6 @@ challenge_routes = APIRouter()
 
 challenge_service = ChallengeService()
 admin_only = RoleChecker(["admin"])
-
 
 
 @challenge_routes.post(
@@ -39,18 +35,14 @@ async def create_challenge(
 async def get_challenges(
     session: AsyncSession = Depends(get_session),
 ):
-    return await challenge_service.get_all_challenges(
-        session,
-    )
+    return await challenge_service.get_all_challenges(session)
 
 
 @challenge_routes.get("/leaderboard")
 async def leaderboard(
     session: AsyncSession = Depends(get_session),
 ):
-    return await challenge_service.get_leaderboard(
-        session,
-    )
+    return await challenge_service.get_leaderboard(session)
 
 
 @challenge_routes.get("/my-submissions")
@@ -88,7 +80,7 @@ async def get_challenge(
         challenge_id,
     )
 
-    if challenge is None:
+    if not challenge:
         raise HTTPException(
             status_code=404,
             detail="Challenge not found",
@@ -109,7 +101,7 @@ async def submit_challenge(
         challenge_id,
     )
 
-    if challenge is None:
+    if not challenge:
         raise HTTPException(
             status_code=404,
             detail="Challenge not found",
@@ -121,3 +113,4 @@ async def submit_challenge(
         challenge_id,
         submission,
     )
+

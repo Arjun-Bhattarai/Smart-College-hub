@@ -1,7 +1,10 @@
-from sqlalchemy import UniqueConstraint
-from sqlmodel import SQLModel, Field
 from datetime import datetime
 from uuid import UUID, uuid4
+
+from sqlalchemy import Column, ForeignKey, UniqueConstraint
+from sqlalchemy.dialects.postgresql import UUID as PGUUID
+from sqlmodel import Field, SQLModel
+
 
 class CollaborationMembership(SQLModel, table=True):
     __tablename__ = "collaboration_memberships"
@@ -20,13 +23,24 @@ class CollaborationMembership(SQLModel, table=True):
     )
 
     collaboration_id: UUID = Field(
-        foreign_key="collaborations.id",
-        index=True,
+        sa_column=Column(
+            PGUUID(as_uuid=True),
+            ForeignKey(
+                "collaborations.id",
+                ondelete="CASCADE",
+            ),
+            nullable=False,
+            index=True,
+        )
     )
 
     user_id: UUID = Field(
-        foreign_key="users.uid",
-        index=True,
+        sa_column=Column(
+            PGUUID(as_uuid=True),
+            ForeignKey("users.uid"),
+            nullable=False,
+            index=True,
+        )
     )
 
     role: str = Field(
