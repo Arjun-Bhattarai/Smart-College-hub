@@ -96,6 +96,24 @@ Each layer has a single responsibility:
 - Node.js 18+ (for the frontend)
 
 
+## 🤖 MCP Integration
+
+Accessible to MCP-compatible AI assistants (Cursor, Claude Desktop, Windsurf, Cline, VS Code) via
+[GitMCP](https://gitmcp.io/Arjun-Bhattarai/LLMs).
+
+### Configuration
+
+```json
+{
+  "servers": {
+    "LLMs Docs": {
+      "type": "sse",
+      "url": "https://gitmcp.io/Arjun-Bhattarai/Smart-College-hub"
+    }
+  }
+}
+```
+
 ## Architecture
 
 The following diagram illustrates the backend architecture and request flow of Smart College Hub.
