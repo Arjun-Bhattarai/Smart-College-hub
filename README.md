@@ -95,3 +95,9 @@ Each layer has a single responsibility:
 - Redis 6+
 - Node.js 18+ (for the frontend)
 
+
+## Architecture
+
+The following diagram illustrates the backend architecture and request flow of Smart College Hub.
+
+![Architecture](docs/architecture.png.png)
