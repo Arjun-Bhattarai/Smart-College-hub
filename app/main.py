@@ -1,6 +1,8 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
 from app.api.v1.auth import auth_router
-from app.api.v1.token import  token_router
+from app.api.v1.token import token_router
 from app.api.v1.coding_challenge import challenge_routes
 from app.api.v1.collaboration.collaboration import collaboration_router
 from app.api.v1.collaboration.join_request import collaboration_join_request_router
@@ -10,6 +12,17 @@ app = FastAPI(
     title="Smart College Hub API",
     description="API for Smart College Hub application",
     version="1.0.0",
+)
+
+# smart college hub frontend run hudi xa localhost:8081 bata run huda cross origin error aauxa so yo middleware le tyo error lai handle garxa
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:8081",  # Vite frontend backend sanga communicate garna allow garxa
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 app.include_router(auth_router, prefix="/auth", tags=["Auth"])

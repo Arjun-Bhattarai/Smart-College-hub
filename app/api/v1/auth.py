@@ -71,7 +71,6 @@ async def login_users(user: UserLogin, session: AsyncSession = Depends(get_sessi
 
 @auth_router.get("/logout")
 async def logout(credentials=Depends(AccessTokenBearer())):
-
     jti = credentials.get("jti")
 
     if jti:
