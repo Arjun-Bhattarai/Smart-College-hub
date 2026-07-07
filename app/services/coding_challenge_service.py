@@ -1,3 +1,5 @@
+from http.client import HTTPException
+
 from sqlmodel.ext.asyncio.session import AsyncSession
 from uuid import UUID
 
@@ -5,6 +7,7 @@ from app.models.coding_challenge import CodingChallenge
 from app.models.submission import Submission
 from app.repositories.coding_challenge_repository import ChallengeRepository
 from app.repositories.submission_repository import SubmissionRepository
+from app.schemas.submission_schema import SubmissionReview
 
 
 class ChallengeService:
@@ -81,3 +84,30 @@ class ChallengeService:
         return await self.submission_repo.get_leaderboard(
             session,
         )
+    
+
+    async def review_submission(
+        self,
+        session: AsyncSession,
+        submission_id: UUID,
+        review_data: SubmissionReview,
+):
+        submission = await self.submission_repo.get_by_id(
+        session,
+        submission_id,
+    )
+
+        if not submission:
+            raise HTTPException(
+            status_code=404,
+            detail="Submission not found.",
+        )
+
+        submission.score = review_data.score
+        submission.status = review_data.status
+        submission.feedback = review_data.feedback
+
+        return await self.submission_repo.review_submission(
+            session,
+            submission,
+    )

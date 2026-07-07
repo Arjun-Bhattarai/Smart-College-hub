@@ -1,5 +1,6 @@
 from uuid import UUID
 
+from requests import session
 from sqlmodel import select
 from sqlmodel.ext.asyncio.session import AsyncSession
 
@@ -49,3 +50,14 @@ class ChallengeRepository:
     ) -> None:
         await session.delete(challenge)
         await session.commit()
+
+
+    async def review_submission(
+            self,
+        session: AsyncSession,
+        submission,
+):
+        session.add(submission)
+        await session.commit()
+        await session.refresh(submission)
+        return submission

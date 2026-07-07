@@ -13,3 +13,9 @@ class SubmissionResponse(BaseModel):
     status: str
     score: int
     submitted_at: datetime
+
+
+class SubmissionReview(BaseModel):
+    score: int
+    status: str
+    feedback: str | None = None
