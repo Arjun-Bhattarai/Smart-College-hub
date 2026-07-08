@@ -11,6 +11,13 @@ class ChallengeCreate(BaseModel):
     starter_code: str | None = None
 
 
+class ChallengeUpdate(BaseModel):
+    title: str
+    description: str
+    difficulty: str
+    starter_code: str | None = None
+
+
 class ChallengeResponse(BaseModel):
     id: UUID
     title: str

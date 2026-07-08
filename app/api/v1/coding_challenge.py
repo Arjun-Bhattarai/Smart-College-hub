@@ -44,6 +44,24 @@ async def get_challenges(
     return await challenge_service.get_all_challenges(session)
 
 
+@challenge_routes.get("/my-submissions")
+async def my_submissions(
+    current_user: User = Depends(get_current_user),
+    session: AsyncSession = Depends(get_session),
+):
+    return await challenge_service.get_user_submissions(
+        session,
+        current_user.uid,
+    )
+
+
+@challenge_routes.get("/leaderboard")
+async def leaderboard(
+    session: AsyncSession = Depends(get_session),
+):
+    return await challenge_service.get_leaderboard(session)
+
+
 @challenge_routes.get("/{challenge_id}")
 async def get_challenge(
     challenge_id: UUID,
@@ -89,26 +107,6 @@ async def submit_challenge(
         challenge_id,
         submission,
     )
-
-
-@challenge_routes.get("/my-submissions")
-async def my_submissions(
-    current_user: User = Depends(get_current_user),
-    session: AsyncSession = Depends(get_session),
-):
-    return await challenge_service.get_user_submissions(
-        session,
-        current_user.uid,
-    )
-
-
-
-
-@challenge_routes.get("/leaderboard")
-async def leaderboard(
-    session: AsyncSession = Depends(get_session),
-):
-    return await challenge_service.get_leaderboard(session)
 
 
 
@@ -198,4 +196,28 @@ async def review_submission(
         session,
         submission_id,
         review,
+    )
+
+@challenge_routes.delete(
+    "/{challenge_id}",
+    dependencies=[Depends(admin_only)],
+)
+async def delete_challenge(
+    challenge_id: UUID,
+    session: AsyncSession = Depends(get_session),
+):
+    challenge = await challenge_service.get_challenge(
+        session,
+        challenge_id,
+    )
+
+    if not challenge:
+        raise HTTPException(
+            status_code=404,
+            detail="Challenge not found",
+        )
+
+    return await challenge_service.delete_challenge(
+        session,
+        challenge_id,
     )

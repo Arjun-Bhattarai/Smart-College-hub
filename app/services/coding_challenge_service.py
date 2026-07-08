@@ -1,4 +1,4 @@
-from http.client import HTTPException
+from fastapi import HTTPException
 
 from sqlmodel.ext.asyncio.session import AsyncSession
 from uuid import UUID
@@ -77,6 +77,26 @@ class ChallengeService:
             user_id,
         )
 
+    async def get_challenge_submissions(
+        self,
+        session: AsyncSession,
+        challenge_id: UUID,
+    ):
+        return await self.submission_repo.get_by_challenge(
+            session,
+            challenge_id,
+        )
+
+    async def get_submission(
+        self,
+        session: AsyncSession,
+        submission_id: UUID,
+    ):
+        return await self.submission_repo.get_by_id(
+            session,
+            submission_id,
+        )
+
     async def get_leaderboard(
         self,
         session: AsyncSession,
@@ -84,24 +104,23 @@ class ChallengeService:
         return await self.submission_repo.get_leaderboard(
             session,
         )
-    
 
     async def review_submission(
         self,
         session: AsyncSession,
         submission_id: UUID,
         review_data: SubmissionReview,
-):
+    ):
         submission = await self.submission_repo.get_by_id(
-        session,
-        submission_id,
-    )
+            session,
+            submission_id,
+        )
 
         if not submission:
             raise HTTPException(
-            status_code=404,
-            detail="Submission not found.",
-        )
+                status_code=404,
+                detail="Submission not found.",
+            )
 
         submission.score = review_data.score
         submission.status = review_data.status
@@ -110,4 +129,25 @@ class ChallengeService:
         return await self.submission_repo.review_submission(
             session,
             submission,
-    )
+        )
+
+    async def delete_challenge(
+        self,
+        session: AsyncSession,
+        challenge_id: UUID,
+    ):
+        challenge = await self.challenge_repo.get_by_id(
+            session,
+            challenge_id,
+        )
+
+        if not challenge:
+            raise HTTPException(
+                status_code=404,
+                detail="Challenge not found",
+            )
+
+        return await self.challenge_repo.delete(
+            session,
+            challenge,
+        )

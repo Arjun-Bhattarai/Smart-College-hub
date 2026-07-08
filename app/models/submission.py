@@ -27,6 +27,7 @@ class Submission(SQLModel, table=True):
 
     status: str = "pending"
     score: int = 0
+    feedback: str | None = None
 
     submitted_at: datetime = Field(
         default_factory=datetime.utcnow,

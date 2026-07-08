@@ -1,10 +1,11 @@
 from uuid import UUID
 
-from requests import session
+from fastapi import HTTPException, status
 from sqlmodel import select
 from sqlmodel.ext.asyncio.session import AsyncSession
 
 from app.models.coding_challenge import CodingChallenge
+from app.models.submission import Submission
 
 
 class ChallengeRepository:
@@ -48,16 +49,17 @@ class ChallengeRepository:
         session: AsyncSession,
         challenge: CodingChallenge,
     ) -> None:
+        statement = select(Submission).where(
+            Submission.challenge_id == challenge.id
+        )
+
+        result = await session.exec(statement)
+
+        if result.first() is not None:
+            raise HTTPException(
+                status_code=status.HTTP_409_CONFLICT,
+                detail="Cannot delete challenge: submissions exist for it",
+            )
+
         await session.delete(challenge)
         await session.commit()
-
-
-    async def review_submission(
-            self,
-        session: AsyncSession,
-        submission,
-):
-        session.add(submission)
-        await session.commit()
-        await session.refresh(submission)
-        return submission

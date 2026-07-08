@@ -95,3 +95,14 @@ class SubmissionRepository:
     ) -> None:
         await session.delete(submission)
         await session.commit()
+
+    async def review_submission(
+        self,
+        session: AsyncSession,
+        submission: Submission,
+    ) -> Submission:
+        session.add(submission)
+        await session.commit()
+        await session.refresh(submission)
+
+        return submission
