@@ -1,35 +1,63 @@
+from uuid import UUID
+
 from sqlmodel import select
 from sqlmodel.ext.asyncio.session import AsyncSession
-from uuid import UUID
+
+from app.core.security import generate_password_hash
 from app.models.user import User
 from app.schemas.user_schema import UserCreate
-from app.core.security import generate_password_hash
 
 
 class AuthService:
 
-    async def get_user_by_email(self, email: str, session: AsyncSession):
+    async def get_user_by_email(
+        self,
+        email: str,
+        session: AsyncSession,
+    ):
         statement = select(User).where(User.email == email)
         result = await session.exec(statement)
         return result.first()
 
-    async def get_user_by_id(self, user_id: UUID, session: AsyncSession):
+    async def get_user_by_id(
+        self,
+        user_id: UUID,
+        session: AsyncSession,
+    ):
         statement = select(User).where(User.uid == user_id)
         result = await session.exec(statement)
         return result.first()
 
-    async def get_user(self, email: str, username: str, session: AsyncSession):
+    async def get_user(
+        self,
+        email: str,
+        username: str,
+        session: AsyncSession,
+    ):
         statement = select(User).where(
             (User.email == email) | (User.username == username)
         )
         result = await session.exec(statement)
         return result.first()
 
-    async def user_exists(self, email: str, username: str, session: AsyncSession):
-        user = await self.get_user(email, username, session)
+    async def user_exists(
+        self,
+        email: str,
+        username: str,
+        session: AsyncSession,
+    ):
+        user = await self.get_user(
+            email,
+            username,
+            session,
+        )
         return user is not None
 
-    async def create_user(self, user_data: UserCreate, session: AsyncSession):
+    async def create_user(
+        self,
+        user_data: UserCreate,
+        session: AsyncSession,
+    ):
         user_data_dict = user_data.model_dump()
 
         user_data_dict["password"] = generate_password_hash(
@@ -44,3 +72,11 @@ class AuthService:
         await session.refresh(new_user)
 
         return new_user
+
+    async def get_all_users(
+        self,
+        session: AsyncSession,
+    ):
+        statement = select(User)
+        result = await session.exec(statement)
+        return result.all()

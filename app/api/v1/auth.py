@@ -84,3 +84,11 @@ async def me(
 ):
     return UserResponse.model_validate(user)
 
+@auth_router.get(
+    "/users",
+    dependencies=[Depends(RoleChecker(["admin"]))],
+)
+async def get_users(
+    session: AsyncSession = Depends(get_session),
+):
+    return await auth_service.get_all_users(session)
