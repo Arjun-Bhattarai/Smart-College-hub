@@ -8,7 +8,6 @@ Smart College Hub helps students and teachers connect through coding challenges,
   <img src="https://img.shields.io/badge/FastAPI-async-009688?style=flat-square&logo=fastapi" />
   <img src="https://img.shields.io/badge/PostgreSQL-SQLModel-336791?style=flat-square&logo=postgresql&logoColor=white" />
   <img src="https://img.shields.io/badge/Redis-token%20blocklist-DC382D?style=flat-square&logo=redis&logoColor=white" />
-  <img src="https://img.shields.io/badge/license-MIT-informational?style=flat-square" />
 </p>
 
 ---
