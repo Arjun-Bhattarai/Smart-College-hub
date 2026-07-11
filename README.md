@@ -13,7 +13,7 @@ Smart College Hub helps students and teachers connect through coding challenges,
 ---
 
 
-## 🧭 Overview
+## 🧭 Overview:
 
 Smart College Hub is designed to solve a simple problem: college students learning to code rarely have a single place to **practice, compete, and collaborate** with peers in a structured way. This platform brings coding challenges, leaderboards, and project/study-group formation together under one roof, with an authentication and authorization system solid enough to support real multi-role usage (students, teachers, and admins).
 
