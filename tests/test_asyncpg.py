@@ -4,7 +4,7 @@ import asyncpg
 async def main():
     conn = await asyncpg.connect(
         user="postgres",
-        password="1234",
+        password="****",
         host="127.0.0.1",
         port=5433,
         database="smart_college_hub",
