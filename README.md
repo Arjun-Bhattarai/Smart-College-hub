@@ -188,35 +188,7 @@ Benefits:
 
 ---
 
-# Project Structure
 
-```text
-Smart-College-Hub/
-│
-├── Backend/
-│   └── app/
-│       ├── api/              # API routers
-│       ├── core/             # Configuration & security
-│       ├── db/               # Database session & migrations
-│       ├── dependencies/     # Shared dependencies
-│       ├── models/           # SQLModel models
-│       ├── repositories/     # Data access layer
-│       ├── schemas/          # Pydantic schemas
-│       ├── services/         # Business logic
-│       └── utils/            # Utility functions
-│
-├── Frontend/
-│   └── src/
-│       ├── routes/           # Application pages
-│       ├── components/       # Reusable UI components
-│       └── lib/              # API helpers & shared utilities
-│
-├── docs/                     # Project documentation
-│
-├── docker-compose.yml
-├── README.md
-└── .env.example
-```
 
 ---
 
@@ -244,65 +216,8 @@ PostgreSQL
 
 ---
 
-# Installation / Setup
 
-### Clone the repository
 
-```bash
-git clone <repository-url>
-cd Smart-College-Hub
-```
-
-### Configure environment variables
-
-Copy the example environment files.
-
-```bash
-cp Backend/.env.example Backend/.env
-cp Frontend/.env.example Frontend/.env
-```
-
-### Start the application
-
-```bash
-docker compose up --build
-```
-
-Backend:
-
-```
-http://localhost:8000
-```
-
-Frontend:
-
-```
-http://localhost:5173
-```
-
----
-
-# Environment Variables
-
-Backend example:
-
-```env
-DATABASE_URL=
-ALEMBIC_DATABASE_URL=
-JWT_SECRET_KEY=
-JWT_REFRESH_SECRET_KEY=
-REDIS_URL=
-ACCESS_TOKEN_EXPIRE_MINUTES=
-REFRESH_TOKEN_EXPIRE_DAYS=
-```
-
-Frontend example:
-
-```env
-VITE_API_BASE_URL=http://localhost:8000
-```
-
----
 
 # API Modules
 
@@ -340,20 +255,3 @@ Recommended testing includes:
 
 ---
 
-# Contributing
-
-Contributions are welcome.
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push the branch
-5. Open a Pull Request
-
-Please follow the existing project structure and coding conventions.
-
----
-
-# License
-
-This project is licensed under the **MIT License**. See the `LICENSE` file for details.
