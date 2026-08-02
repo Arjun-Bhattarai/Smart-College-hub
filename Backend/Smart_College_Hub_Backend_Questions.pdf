@@ -1,0 +1,419 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [6 0 R 8 0 R 10 0 R 12 0 R 14 0 R 16 0 R 18 0 R] /Count 7 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+5 0 obj
+<< /Length 4094 >>
+stream
+BT /F2 18 Tf 50 800 Td (Smart College Hub Backend Viva Questions) Tj ET
+BT /F1 10 Tf 50 772 Td (Question list with direct answers for college backend presentation preparation.) Tj ET
+BT /F2 13 Tf 50 742 Td (Project Overview) Tj ET
+BT /F2 10 Tf 58 722 Td (1. What is Smart College Hub?) Tj ET
+BT /F1 9 Tf 72 709 Td (Answer: Smart College Hub is a backend-supported college platform that helps students use) Tj ET
+BT /F1 9 Tf 72 697 Td (features such as authentication, coding challenges, and collaboration in one system.) Tj ET
+BT /F2 10 Tf 58 680 Td (2. What problem does your project solve?) Tj ET
+BT /F1 9 Tf 72 667 Td (Answer: The project solves the problem of scattered student activities by keeping learning,) Tj ET
+BT /F1 9 Tf 72 655 Td (coding practice, and collaboration features in a centralized application.) Tj ET
+BT /F2 10 Tf 58 638 Td (3. What are the main backend modules?) Tj ET
+BT /F1 9 Tf 72 625 Td (Answer: Auth, token, coding challenges, collaborations, join requests, and memberships.) Tj ET
+BT /F2 10 Tf 58 608 Td (4. Why did you choose FastAPI?) Tj ET
+BT /F1 9 Tf 72 595 Td (Answer: FastAPI was chosen because it is fast, supports async programming, provides) Tj ET
+BT /F1 9 Tf 72 583 Td (automatic API documentation, validates data using type hints, and is simple to structure.) Tj ET
+BT /F2 10 Tf 58 566 Td (5. What is the role of app/main.py?) Tj ET
+BT /F1 9 Tf 72 553 Td (Answer: It creates the FastAPI app, adds middleware, and registers all routers.) Tj ET
+BT /F2 10 Tf 58 536 Td (6. How is the backend connected to the frontend?) Tj ET
+BT /F1 9 Tf 72 523 Td (Answer: Frontend calls REST APIs exposed by FastAPI using HTTP requests.) Tj ET
+BT /F2 10 Tf 58 506 Td (7. What is a router in FastAPI?) Tj ET
+BT /F1 9 Tf 72 493 Td (Answer: A router groups related endpoints so the code stays organized.) Tj ET
+BT /F2 10 Tf 58 476 Td (8. Why did you separate routes, services, repositories, models, and schemas?) Tj ET
+BT /F1 9 Tf 72 463 Td (Answer: Separation makes the code maintainable, testable, and easier to explain.) Tj ET
+BT /F2 10 Tf 58 446 Td (9. Explain the request flow in your backend.) Tj ET
+BT /F1 9 Tf 72 433 Td (Answer: Request goes to route, route calls service, service calls repository, repository) Tj ET
+BT /F1 9 Tf 72 421 Td (uses database, then response is returned.) Tj ET
+BT /F2 10 Tf 58 404 Td (10. What future improvements can be added?) Tj ET
+BT /F1 9 Tf 72 391 Td (Answer: Testing, deployment, rate limiting, better logging, notifications, and production) Tj ET
+BT /F1 9 Tf 72 379 Td (security hardening.) Tj ET
+BT /F2 13 Tf 50 354 Td (FastAPI) Tj ET
+BT /F2 10 Tf 58 334 Td (11. What is FastAPI?) Tj ET
+BT /F1 9 Tf 72 321 Td (Answer: A modern Python framework for building APIs quickly with automatic validation and) Tj ET
+BT /F1 9 Tf 72 309 Td (docs.) Tj ET
+BT /F2 10 Tf 58 292 Td (12. What are the benefits of FastAPI?) Tj ET
+BT /F1 9 Tf 72 279 Td (Answer: High performance, async support, type hints, Swagger docs, and dependency injection.) Tj ET
+BT /F2 10 Tf 58 262 Td (13. What is an endpoint?) Tj ET
+BT /F1 9 Tf 72 249 Td (Answer: A URL path plus HTTP method that performs a backend action.) Tj ET
+BT /F2 10 Tf 58 232 Td (14. What is include_router\(\) used for?) Tj ET
+BT /F1 9 Tf 72 219 Td (Answer: It attaches route groups to the main FastAPI app.) Tj ET
+BT /F2 10 Tf 58 202 Td (15. What are tags in FastAPI?) Tj ET
+BT /F1 9 Tf 72 189 Td (Answer: Tags organize endpoints in the Swagger documentation.) Tj ET
+BT /F2 10 Tf 58 172 Td (16. What is Swagger UI?) Tj ET
+BT /F1 9 Tf 72 159 Td (Answer: The automatic interactive API documentation available in the browser.) Tj ET
+BT /F2 10 Tf 58 142 Td (17. What is dependency injection?) Tj ET
+BT /F1 9 Tf 72 129 Td (Answer: FastAPI automatically provides required objects like database sessions or current) Tj ET
+BT /F1 9 Tf 72 117 Td (users.) Tj ET
+BT /F2 10 Tf 58 100 Td (18. What is Depends\(\)?) Tj ET
+BT /F1 9 Tf 72 87 Td (Answer: It declares a dependency that FastAPI should run before the endpoint.) Tj ET
+BT /F1 8 Tf 50 28 Td (Smart College Hub Backend Viva Questions | Page 1) Tj ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 5 0 R >>
+endobj
+7 0 obj
+<< /Length 3691 >>
+stream
+BT /F2 10 Tf 58 800 Td (19. Why use async functions?) Tj ET
+BT /F1 9 Tf 72 787 Td (Answer: They help handle database and network operations efficiently.) Tj ET
+BT /F2 10 Tf 58 770 Td (20. What is middleware?) Tj ET
+BT /F1 9 Tf 72 757 Td (Answer: Code that runs before or after requests, such as CORS middleware.) Tj ET
+BT /F2 13 Tf 50 732 Td (Authentication) Tj ET
+BT /F2 10 Tf 58 712 Td (21. How does registration work?) Tj ET
+BT /F1 9 Tf 72 699 Td (Answer: The backend validates user data, hashes the password, and stores the user.) Tj ET
+BT /F2 10 Tf 58 682 Td (22. How does login work?) Tj ET
+BT /F1 9 Tf 72 669 Td (Answer: The backend checks email/username and password, then returns tokens if valid.) Tj ET
+BT /F2 10 Tf 58 652 Td (23. Why do we hash passwords?) Tj ET
+BT /F1 9 Tf 72 639 Td (Answer: So original passwords are not stored and cannot be easily stolen.) Tj ET
+BT /F2 10 Tf 58 622 Td (24. Which hashing library is used?) Tj ET
+BT /F1 9 Tf 72 609 Td (Answer: Passlib with bcrypt.) Tj ET
+BT /F2 10 Tf 58 592 Td (25. What is bcrypt?) Tj ET
+BT /F1 9 Tf 72 579 Td (Answer: A secure password hashing algorithm designed to be slow against brute-force attacks.) Tj ET
+BT /F2 10 Tf 58 562 Td (26. How do you verify passwords?) Tj ET
+BT /F1 9 Tf 72 549 Td (Answer: Compare the plain password with the stored hash using verify_password\(\).) Tj ET
+BT /F2 10 Tf 58 532 Td (27. What happens if credentials are invalid?) Tj ET
+BT /F1 9 Tf 72 519 Td (Answer: The backend returns an authentication error instead of a token.) Tj ET
+BT /F2 10 Tf 58 502 Td (28. What is the role of AuthService?) Tj ET
+BT /F1 9 Tf 72 489 Td (Answer: It contains authentication business logic.) Tj ET
+BT /F2 10 Tf 58 472 Td (29. What is the role of UserRepository?) Tj ET
+BT /F1 9 Tf 72 459 Td (Answer: It handles user-related database operations.) Tj ET
+BT /F2 10 Tf 58 442 Td (30. Why not store password in plain text?) Tj ET
+BT /F1 9 Tf 72 429 Td (Answer: It is a serious security risk if the database is leaked.) Tj ET
+BT /F2 13 Tf 50 404 Td (JWT And Tokens) Tj ET
+BT /F2 10 Tf 58 384 Td (31. What is JWT?) Tj ET
+BT /F1 9 Tf 72 371 Td (Answer: A signed token used to securely transfer user identity and claims.) Tj ET
+BT /F2 10 Tf 58 354 Td (32. Why did you use JWT?) Tj ET
+BT /F1 9 Tf 72 341 Td (Answer: It allows stateless authentication between frontend and backend.) Tj ET
+BT /F2 10 Tf 58 324 Td (33. What data is inside your token?) Tj ET
+BT /F1 9 Tf 72 311 Td (Answer: uid, email, username, role, expiry, jti, and refresh flag.) Tj ET
+BT /F2 10 Tf 58 294 Td (34. What is an access token?) Tj ET
+BT /F1 9 Tf 72 281 Td (Answer: A short-lived token used to access protected APIs.) Tj ET
+BT /F2 10 Tf 58 264 Td (35. What is a refresh token?) Tj ET
+BT /F1 9 Tf 72 251 Td (Answer: A longer-lived token used to generate a new access token.) Tj ET
+BT /F2 10 Tf 58 234 Td (36. Difference between access and refresh token?) Tj ET
+BT /F1 9 Tf 72 221 Td (Answer: Access token is for API access; refresh token is for renewing access.) Tj ET
+BT /F2 10 Tf 58 204 Td (37. Why does the access token expire?) Tj ET
+BT /F1 9 Tf 72 191 Td (Answer: To reduce damage if the token is stolen.) Tj ET
+BT /F2 10 Tf 58 174 Td (38. What is jti?) Tj ET
+BT /F1 9 Tf 72 161 Td (Answer: A unique token ID used for tracking and blacklisting tokens.) Tj ET
+BT /F2 10 Tf 58 144 Td (39. Why is uid validated as UUID?) Tj ET
+BT /F1 9 Tf 72 131 Td (Answer: To ensure token identity format is valid and safe.) Tj ET
+BT /F2 10 Tf 58 114 Td (40. What happens when a token expires?) Tj ET
+BT /F1 9 Tf 72 101 Td (Answer: The backend returns 401 Unauthorized.) Tj ET
+BT /F1 8 Tf 50 28 Td (Smart College Hub Backend Viva Questions | Page 2) Tj ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 7 0 R >>
+endobj
+9 0 obj
+<< /Length 3624 >>
+stream
+BT /F2 10 Tf 58 800 Td (41. What happens when a token is invalid?) Tj ET
+BT /F1 9 Tf 72 787 Td (Answer: The backend rejects it with an invalid token error.) Tj ET
+BT /F2 10 Tf 58 770 Td (42. How does logout work?) Tj ET
+BT /F1 9 Tf 72 757 Td (Answer: The token can be added to a blacklist so it cannot be reused.) Tj ET
+BT /F2 10 Tf 58 740 Td (43. Why use Redis for token blacklist?) Tj ET
+BT /F1 9 Tf 72 727 Td (Answer: Redis is fast and good for temporary token storage.) Tj ET
+BT /F2 10 Tf 58 710 Td (44. What is the JWT secret?) Tj ET
+BT /F1 9 Tf 72 697 Td (Answer: A private key used to sign and verify tokens.) Tj ET
+BT /F2 10 Tf 58 680 Td (45. Why store JWT secret in .env?) Tj ET
+BT /F1 9 Tf 72 667 Td (Answer: Secrets should not be hardcoded in source code.) Tj ET
+BT /F2 13 Tf 50 642 Td (Authorization And Roles) Tj ET
+BT /F2 10 Tf 58 622 Td (46. What is authentication?) Tj ET
+BT /F1 9 Tf 72 609 Td (Answer: Checking who the user is.) Tj ET
+BT /F2 10 Tf 58 592 Td (47. What is authorization?) Tj ET
+BT /F1 9 Tf 72 579 Td (Answer: Checking what the user is allowed to do.) Tj ET
+BT /F2 10 Tf 58 562 Td (48. Difference between authentication and authorization?) Tj ET
+BT /F1 9 Tf 72 549 Td (Answer: Authentication verifies identity; authorization verifies permission.) Tj ET
+BT /F2 10 Tf 58 532 Td (49. What is role-based access control?) Tj ET
+BT /F1 9 Tf 72 519 Td (Answer: Access is allowed based on user roles such as student or admin.) Tj ET
+BT /F2 10 Tf 58 502 Td (50. How does RoleChecker work?) Tj ET
+BT /F1 9 Tf 72 489 Td (Answer: It checks if the current user's role is inside allowed_roles.) Tj ET
+BT /F2 10 Tf 58 472 Td (51. What happens if a user has no permission?) Tj ET
+BT /F1 9 Tf 72 459 Td (Answer: The backend returns 403 Forbidden.) Tj ET
+BT /F2 10 Tf 58 442 Td (52. Why protect routes?) Tj ET
+BT /F1 9 Tf 72 429 Td (Answer: To prevent unauthorized users from accessing private data or actions.) Tj ET
+BT /F2 10 Tf 58 412 Td (53. Where is the current user retrieved?) Tj ET
+BT /F1 9 Tf 72 399 Td (Answer: From token data using get_current_user\(\).) Tj ET
+BT /F2 13 Tf 50 374 Td (Database) Tj ET
+BT /F2 10 Tf 58 354 Td (54. Which database layer is used?) Tj ET
+BT /F1 9 Tf 72 341 Td (Answer: SQLModel with SQLAlchemy async session.) Tj ET
+BT /F2 10 Tf 58 324 Td (55. What is SQLModel?) Tj ET
+BT /F1 9 Tf 72 311 Td (Answer: A library combining Pydantic-style validation with SQLAlchemy ORM features.) Tj ET
+BT /F2 10 Tf 58 294 Td (56. What is an ORM?) Tj ET
+BT /F1 9 Tf 72 281 Td (Answer: Object Relational Mapper; it maps Python classes to database tables.) Tj ET
+BT /F2 10 Tf 58 264 Td (57. Why use ORM?) Tj ET
+BT /F1 9 Tf 72 251 Td (Answer: It makes database operations easier and safer than raw SQL for common tasks.) Tj ET
+BT /F2 10 Tf 58 234 Td (58. What is AsyncSession?) Tj ET
+BT /F1 9 Tf 72 221 Td (Answer: An async database session used for non-blocking database operations.) Tj ET
+BT /F2 10 Tf 58 204 Td (59. What does get_session\(\) do?) Tj ET
+BT /F1 9 Tf 72 191 Td (Answer: It creates and yields a database session for each request.) Tj ET
+BT /F2 10 Tf 58 174 Td (60. What is DATABASE_URL?) Tj ET
+BT /F1 9 Tf 72 161 Td (Answer: The connection string used to connect the backend to the database.) Tj ET
+BT /F2 10 Tf 58 144 Td (61. What is a model?) Tj ET
+BT /F1 9 Tf 72 131 Td (Answer: A Python class that represents a database table.) Tj ET
+BT /F2 10 Tf 58 114 Td (62. What is a schema?) Tj ET
+BT /F1 9 Tf 72 101 Td (Answer: A validation and serialization structure for request and response data.) Tj ET
+BT /F1 8 Tf 50 28 Td (Smart College Hub Backend Viva Questions | Page 3) Tj ET
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 9 0 R >>
+endobj
+11 0 obj
+<< /Length 3593 >>
+stream
+BT /F2 10 Tf 58 800 Td (63. Difference between model and schema?) Tj ET
+BT /F1 9 Tf 72 787 Td (Answer: Model maps to database; schema controls API data shape.) Tj ET
+BT /F2 10 Tf 58 770 Td (64. What is a primary key?) Tj ET
+BT /F1 9 Tf 72 757 Td (Answer: A unique identifier for each row in a table.) Tj ET
+BT /F2 10 Tf 58 740 Td (65. What is a foreign key?) Tj ET
+BT /F1 9 Tf 72 727 Td (Answer: A field that links one table to another table.) Tj ET
+BT /F2 10 Tf 58 710 Td (66. What is cascade delete?) Tj ET
+BT /F1 9 Tf 72 697 Td (Answer: Related child records are deleted when the parent record is deleted.) Tj ET
+BT /F2 10 Tf 58 680 Td (67. Why use indexes?) Tj ET
+BT /F1 9 Tf 72 667 Td (Answer: Indexes speed up searches and filtering on important columns.) Tj ET
+BT /F2 13 Tf 50 642 Td (Alembic Migrations) Tj ET
+BT /F2 10 Tf 58 622 Td (68. What is Alembic?) Tj ET
+BT /F1 9 Tf 72 609 Td (Answer: A database migration tool for SQLAlchemy projects.) Tj ET
+BT /F2 10 Tf 58 592 Td (69. Why are migrations needed?) Tj ET
+BT /F1 9 Tf 72 579 Td (Answer: They track and apply database structure changes safely.) Tj ET
+BT /F2 10 Tf 58 562 Td (70. What is a migration file?) Tj ET
+BT /F1 9 Tf 72 549 Td (Answer: A versioned script that changes the database schema.) Tj ET
+BT /F2 10 Tf 58 532 Td (71. Why not manually edit database tables?) Tj ET
+BT /F1 9 Tf 72 519 Td (Answer: Manual changes are hard to track and can break team consistency.) Tj ET
+BT /F2 10 Tf 58 502 Td (72. How do migrations help deployment?) Tj ET
+BT /F1 9 Tf 72 489 Td (Answer: They let production database schema match the application code.) Tj ET
+BT /F2 10 Tf 58 472 Td (73. What happens when a model changes?) Tj ET
+BT /F1 9 Tf 72 459 Td (Answer: A new migration should be created and applied.) Tj ET
+BT /F2 10 Tf 58 442 Td (74. Why keep migration files in Git?) Tj ET
+BT /F1 9 Tf 72 429 Td (Answer: They document database history with the codebase.) Tj ET
+BT /F2 13 Tf 50 404 Td (CORS) Tj ET
+BT /F2 10 Tf 58 384 Td (75. What is CORS?) Tj ET
+BT /F1 9 Tf 72 371 Td (Answer: A browser security rule controlling cross-origin frontend-backend requests.) Tj ET
+BT /F2 10 Tf 58 354 Td (76. Why did you add CORS middleware?) Tj ET
+BT /F1 9 Tf 72 341 Td (Answer: To allow the frontend running on localhost ports to call the backend.) Tj ET
+BT /F2 10 Tf 58 324 Td (77. What happens without CORS?) Tj ET
+BT /F1 9 Tf 72 311 Td (Answer: The browser may block frontend API requests.) Tj ET
+BT /F2 10 Tf 58 294 Td (78. Why list specific localhost origins?) Tj ET
+BT /F1 9 Tf 72 281 Td (Answer: It allows development frontend URLs without opening the API to every origin.) Tj ET
+BT /F2 10 Tf 58 264 Td (79. What does allow_methods=['*'] mean?) Tj ET
+BT /F1 9 Tf 72 251 Td (Answer: All HTTP methods like GET, POST, PUT, DELETE are allowed.) Tj ET
+BT /F2 10 Tf 58 234 Td (80. What does allow_headers=['*'] mean?) Tj ET
+BT /F1 9 Tf 72 221 Td (Answer: All request headers are allowed.) Tj ET
+BT /F2 10 Tf 58 204 Td (81. What does allow_credentials=True mean?) Tj ET
+BT /F1 9 Tf 72 191 Td (Answer: Credentials such as auth headers can be included in requests.) Tj ET
+BT /F2 10 Tf 58 174 Td (82. Should all origins be allowed in production?) Tj ET
+BT /F1 9 Tf 72 161 Td (Answer: No, production should allow only trusted domains.) Tj ET
+BT /F2 13 Tf 50 136 Td (Collaboration Module) Tj ET
+BT /F2 10 Tf 58 116 Td (83. What is the collaboration feature?) Tj ET
+BT /F1 9 Tf 72 103 Td (Answer: It lets users create, join, and manage collaboration groups/projects.) Tj ET
+BT /F1 8 Tf 50 28 Td (Smart College Hub Backend Viva Questions | Page 4) Tj ET
+endstream
+endobj
+12 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 11 0 R >>
+endobj
+13 0 obj
+<< /Length 3962 >>
+stream
+BT /F2 10 Tf 58 800 Td (84. Why separate collaboration routes?) Tj ET
+BT /F1 9 Tf 72 787 Td (Answer: To keep collaboration logic organized and independent.) Tj ET
+BT /F2 10 Tf 58 770 Td (85. What is a join request?) Tj ET
+BT /F1 9 Tf 72 757 Td (Answer: A request from a user to join a collaboration.) Tj ET
+BT /F2 10 Tf 58 740 Td (86. What is membership?) Tj ET
+BT /F1 9 Tf 72 727 Td (Answer: A record showing that a user belongs to a collaboration.) Tj ET
+BT /F2 10 Tf 58 710 Td (87. Difference between owner and member?) Tj ET
+BT /F1 9 Tf 72 697 Td (Answer: Owner manages the collaboration; member participates in it.) Tj ET
+BT /F2 10 Tf 58 680 Td (88. How do you prevent duplicate membership?) Tj ET
+BT /F1 9 Tf 72 667 Td (Answer: Using service checks or database constraints.) Tj ET
+BT /F2 10 Tf 58 650 Td (89. How are join requests approved?) Tj ET
+BT /F1 9 Tf 72 637 Td (Answer: The owner/admin accepts the request and membership is created.) Tj ET
+BT /F2 10 Tf 58 620 Td (90. What happens when a collaboration is deleted?) Tj ET
+BT /F1 9 Tf 72 607 Td (Answer: Related memberships and requests can be removed through cascade rules.) Tj ET
+BT /F2 10 Tf 58 590 Td (91. Why have separate join request and membership tables?) Tj ET
+BT /F1 9 Tf 72 577 Td (Answer: A request is pending approval; membership means the user has joined.) Tj ET
+BT /F2 10 Tf 58 560 Td (92. What validation is needed in collaboration APIs?) Tj ET
+BT /F1 9 Tf 72 547 Td (Answer: Check ownership, membership status, duplicate requests, and permissions.) Tj ET
+BT /F2 13 Tf 50 522 Td (Coding Challenge Module) Tj ET
+BT /F2 10 Tf 58 502 Td (93. What is the coding challenge module?) Tj ET
+BT /F1 9 Tf 72 489 Td (Answer: It manages coding problems and student submissions.) Tj ET
+BT /F2 10 Tf 58 472 Td (94. Who can create challenges?) Tj ET
+BT /F1 9 Tf 72 459 Td (Answer: Challenge creation should be limited to authorized users such as admins or teachers) Tj ET
+BT /F1 9 Tf 72 447 Td (so students cannot modify official challenge content.) Tj ET
+BT /F2 10 Tf 58 430 Td (95. What is a submission?) Tj ET
+BT /F1 9 Tf 72 417 Td (Answer: A student's answer or code submitted for a challenge.) Tj ET
+BT /F2 10 Tf 58 400 Td (96. Why store submission feedback?) Tj ET
+BT /F1 9 Tf 72 387 Td (Answer: So students can see evaluation comments or results.) Tj ET
+BT /F2 10 Tf 58 370 Td (97. Why add submission indexes?) Tj ET
+BT /F1 9 Tf 72 357 Td (Answer: To make submission searches and filters faster.) Tj ET
+BT /F2 10 Tf 58 340 Td (98. How does the backend validate challenge data?) Tj ET
+BT /F1 9 Tf 72 327 Td (Answer: Using schemas and service-layer checks.) Tj ET
+BT /F2 10 Tf 58 310 Td (99. What endpoints are expected for challenges?) Tj ET
+BT /F1 9 Tf 72 297 Td (Answer: Create, list, detail, update, delete, and submit.) Tj ET
+BT /F2 10 Tf 58 280 Td (100. What improvement could be added?) Tj ET
+BT /F1 9 Tf 72 267 Td (Answer: Automatic code execution, test cases, leaderboard, and plagiarism checks.) Tj ET
+BT /F2 13 Tf 50 242 Td (Repository And Service Pattern) Tj ET
+BT /F2 10 Tf 58 222 Td (101. What is repository pattern?) Tj ET
+BT /F1 9 Tf 72 209 Td (Answer: A layer that handles database queries separately from business logic.) Tj ET
+BT /F2 10 Tf 58 192 Td (102. What is a service layer?) Tj ET
+BT /F1 9 Tf 72 179 Td (Answer: A layer that contains business rules and coordinates repositories.) Tj ET
+BT /F2 10 Tf 58 162 Td (103. Why not write everything in route files?) Tj ET
+BT /F1 9 Tf 72 149 Td (Answer: Routes become messy and hard to test if they contain all logic.) Tj ET
+BT /F2 10 Tf 58 132 Td (104. What belongs in routes?) Tj ET
+BT /F1 9 Tf 72 119 Td (Answer: Request/response handling, dependencies, and calling services.) Tj ET
+BT /F2 10 Tf 58 102 Td (105. What belongs in services?) Tj ET
+BT /F1 9 Tf 72 89 Td (Answer: Business logic such as validation, permissions, and workflows.) Tj ET
+BT /F1 8 Tf 50 28 Td (Smart College Hub Backend Viva Questions | Page 5) Tj ET
+endstream
+endobj
+14 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 13 0 R >>
+endobj
+15 0 obj
+<< /Length 3716 >>
+stream
+BT /F2 10 Tf 58 800 Td (106. What belongs in repositories?) Tj ET
+BT /F1 9 Tf 72 787 Td (Answer: Database create, read, update, delete operations.) Tj ET
+BT /F2 10 Tf 58 770 Td (107. How does this structure improve maintainability?) Tj ET
+BT /F1 9 Tf 72 757 Td (Answer: Each file has one responsibility and changes are easier to isolate.) Tj ET
+BT /F2 10 Tf 58 740 Td (108. How does this help testing?) Tj ET
+BT /F1 9 Tf 72 727 Td (Answer: Services and repositories can be tested separately.) Tj ET
+BT /F2 13 Tf 50 702 Td (Errors And Status Codes) Tj ET
+BT /F2 10 Tf 58 682 Td (109. What is HTTPException?) Tj ET
+BT /F1 9 Tf 72 669 Td (Answer: FastAPI's way to return controlled HTTP errors.) Tj ET
+BT /F2 10 Tf 58 652 Td (110. When do you return 400?) Tj ET
+BT /F1 9 Tf 72 639 Td (Answer: Bad request or invalid input.) Tj ET
+BT /F2 10 Tf 58 622 Td (111. When do you return 401?) Tj ET
+BT /F1 9 Tf 72 609 Td (Answer: User is not authenticated or token is invalid.) Tj ET
+BT /F2 10 Tf 58 592 Td (112. When do you return 403?) Tj ET
+BT /F1 9 Tf 72 579 Td (Answer: User is authenticated but not allowed.) Tj ET
+BT /F2 10 Tf 58 562 Td (113. When do you return 404?) Tj ET
+BT /F1 9 Tf 72 549 Td (Answer: Requested resource was not found.) Tj ET
+BT /F2 10 Tf 58 532 Td (114. When do you return 500?) Tj ET
+BT /F1 9 Tf 72 519 Td (Answer: Unexpected server error.) Tj ET
+BT /F2 10 Tf 58 502 Td (115. How are expired tokens handled?) Tj ET
+BT /F1 9 Tf 72 489 Td (Answer: JWT decode catches expiry and returns 401.) Tj ET
+BT /F2 10 Tf 58 472 Td (116. How are invalid UUIDs handled?) Tj ET
+BT /F1 9 Tf 72 459 Td (Answer: The backend rejects them with an authentication error.) Tj ET
+BT /F2 10 Tf 58 442 Td (117. Why should error messages be clear?) Tj ET
+BT /F1 9 Tf 72 429 Td (Answer: They help frontend and users understand what went wrong.) Tj ET
+BT /F2 13 Tf 50 404 Td (Security) Tj ET
+BT /F2 10 Tf 58 384 Td (118. How is your backend secured?) Tj ET
+BT /F1 9 Tf 72 371 Td (Answer: Password hashing, JWT auth, role checks, token blacklist, and environment secrets.) Tj ET
+BT /F2 10 Tf 58 354 Td (119. What if JWT secret is leaked?) Tj ET
+BT /F1 9 Tf 72 341 Td (Answer: Attackers could create fake valid tokens.) Tj ET
+BT /F2 10 Tf 58 324 Td (120. Why use .env?) Tj ET
+BT /F1 9 Tf 72 311 Td (Answer: To keep secrets and environment-specific settings outside source code.) Tj ET
+BT /F2 10 Tf 58 294 Td (121. Why is refresh token protection important?) Tj ET
+BT /F1 9 Tf 72 281 Td (Answer: Refresh tokens can create new access tokens.) Tj ET
+BT /F2 10 Tf 58 264 Td (122. What is token blacklisting?) Tj ET
+BT /F1 9 Tf 72 251 Td (Answer: Marking a token as invalid before its normal expiry.) Tj ET
+BT /F2 10 Tf 58 234 Td (123. How can brute force login be reduced?) Tj ET
+BT /F1 9 Tf 72 221 Td (Answer: Rate limiting, account lockout, captcha, and monitoring.) Tj ET
+BT /F2 10 Tf 58 204 Td (124. What production security improvements are needed?) Tj ET
+BT /F1 9 Tf 72 191 Td (Answer: HTTPS, secure cookies, strict CORS, rate limiting, logging, and strong secrets.) Tj ET
+BT /F2 10 Tf 58 174 Td (125. Why should debug logging be reduced in production?) Tj ET
+BT /F1 9 Tf 72 161 Td (Answer: Logs can leak sensitive data and reduce performance.) Tj ET
+BT /F2 13 Tf 50 136 Td (Deployment And Testing) Tj ET
+BT /F2 10 Tf 58 116 Td (126. How would you deploy the backend?) Tj ET
+BT /F1 9 Tf 72 103 Td (Answer: The backend can be deployed on a server using Uvicorn or Gunicorn, connected to a) Tj ET
+BT /F1 9 Tf 72 91 Td (production database and Redis, configured with environment variables, and protected using) Tj ET
+BT /F1 9 Tf 72 79 Td (HTTPS.) Tj ET
+BT /F1 8 Tf 50 28 Td (Smart College Hub Backend Viva Questions | Page 6) Tj ET
+endstream
+endobj
+16 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 15 0 R >>
+endobj
+17 0 obj
+<< /Length 3264 >>
+stream
+BT /F2 10 Tf 58 800 Td (127. What is Uvicorn?) Tj ET
+BT /F1 9 Tf 72 787 Td (Answer: An ASGI server used to run FastAPI applications.) Tj ET
+BT /F2 10 Tf 58 770 Td (128. Development vs production environment?) Tj ET
+BT /F1 9 Tf 72 757 Td (Answer: Development is local and flexible; production must be secure and stable.) Tj ET
+BT /F2 10 Tf 58 740 Td (129. Why disable database echo in production?) Tj ET
+BT /F1 9 Tf 72 727 Td (Answer: It prints SQL queries and may expose sensitive information.) Tj ET
+BT /F2 10 Tf 58 710 Td (130. How did you test APIs?) Tj ET
+BT /F1 9 Tf 72 697 Td (Answer: Using Swagger UI, frontend requests, or tools like Postman.) Tj ET
+BT /F2 10 Tf 58 680 Td (131. What login test cases are important?) Tj ET
+BT /F1 9 Tf 72 667 Td (Answer: Valid login, wrong password, missing fields, expired token, and logout.) Tj ET
+BT /F2 10 Tf 58 650 Td (132. What collaboration test cases are important?) Tj ET
+BT /F1 9 Tf 72 637 Td (Answer: Create collaboration, request join, approve request, duplicate request, and) Tj ET
+BT /F1 9 Tf 72 625 Td (permission checks.) Tj ET
+BT /F2 10 Tf 58 608 Td (133. How do you debug backend errors?) Tj ET
+BT /F1 9 Tf 72 595 Td (Answer: Check logs, status codes, request data, database state, and token validity.) Tj ET
+BT /F2 13 Tf 50 570 Td (Most Important Viva Questions) Tj ET
+BT /F2 10 Tf 58 550 Td (134. Explain your backend architecture.) Tj ET
+BT /F1 9 Tf 72 537 Td (Answer: The backend follows a layered architecture where routes receive requests, services) Tj ET
+BT /F1 9 Tf 72 525 Td (handle business logic, repositories handle database operations, models represent tables, and) Tj ET
+BT /F1 9 Tf 72 513 Td (schemas validate API data.) Tj ET
+BT /F2 10 Tf 58 496 Td (135. Explain login from frontend to backend.) Tj ET
+BT /F1 9 Tf 72 483 Td (Answer: Frontend sends credentials, backend verifies password, returns JWT tokens.) Tj ET
+BT /F2 10 Tf 58 466 Td (136. Why did you use JWT?) Tj ET
+BT /F1 9 Tf 72 453 Td (Answer: For stateless secure authentication.) Tj ET
+BT /F2 10 Tf 58 436 Td (137. Difference between access token and refresh token?) Tj ET
+BT /F1 9 Tf 72 423 Td (Answer: Access is short-lived for APIs; refresh is longer-lived for renewal.) Tj ET
+BT /F2 10 Tf 58 406 Td (138. What is Redis used for?) Tj ET
+BT /F1 9 Tf 72 393 Td (Answer: Token blacklist storage.) Tj ET
+BT /F2 10 Tf 58 376 Td (139. What is CORS?) Tj ET
+BT /F1 9 Tf 72 363 Td (Answer: Browser rule for allowing frontend-backend communication across origins.) Tj ET
+BT /F2 10 Tf 58 346 Td (140. What are Alembic migrations?) Tj ET
+BT /F1 9 Tf 72 333 Td (Answer: Version-controlled database schema changes.) Tj ET
+BT /F2 10 Tf 58 316 Td (141. Explain collaboration module.) Tj ET
+BT /F1 9 Tf 72 303 Td (Answer: Users create collaborations, send join requests, and become members after approval.) Tj ET
+BT /F2 10 Tf 58 286 Td (142. Explain coding challenge module.) Tj ET
+BT /F1 9 Tf 72 273 Td (Answer: It manages challenges and student submissions/feedback.) Tj ET
+BT /F2 10 Tf 58 256 Td (143. What would you improve next?) Tj ET
+BT /F1 9 Tf 72 243 Td (Answer: Testing, deployment, notifications, rate limiting, and stronger production security.) Tj ET
+BT /F1 8 Tf 50 28 Td (Smart College Hub Backend Viva Questions | Page 7) Tj ET
+endstream
+endobj
+18 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 17 0 R >>
+endobj
+xref
+0 19
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000162 00000 n 
+0000000232 00000 n 
+0000000307 00000 n 
+0000004453 00000 n 
+0000004589 00000 n 
+0000008332 00000 n 
+0000008468 00000 n 
+0000012144 00000 n 
+0000012281 00000 n 
+0000015927 00000 n 
+0000016065 00000 n 
+0000020080 00000 n 
+0000020218 00000 n 
+0000023987 00000 n 
+0000024125 00000 n 
+0000027442 00000 n 
+trailer
+<< /Size 19 /Root 1 0 R >>
+startxref
+27580
+%%EOF
