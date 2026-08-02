@@ -1,118 +1,359 @@
-# 🚀 Smart College Hub
+# Smart College Hub
 
-**A full-stack coding challenge and collaboration platform built for college students.**
-
-Smart College Hub helps students and teachers connect through coding challenges, project collaborations, and structured team building — backed by a scalable, production-grade FastAPI service and a modern React frontend.
-
-<p align="left">
-  <img src="https://img.shields.io/badge/FastAPI-async-009688?style=flat-square&logo=fastapi" />
-  <img src="https://img.shields.io/badge/PostgreSQL-SQLModel-336791?style=flat-square&logo=postgresql&logoColor=white" />
-  <img src="https://img.shields.io/badge/Redis-token%20blocklist-DC382D?style=flat-square&logo=redis&logoColor=white" />
-</p>
+A modern full-stack college collaboration platform designed to streamline communication, academic collaboration, and coding activities within educational institutions. Built with **FastAPI**, **React**, **PostgreSQL**, and **Docker**, the platform follows a clean, modular architecture with secure JWT-based authentication and role-based authorization.
 
 ---
 
+## Overview
 
-## 🧭 Overview:
-
-Smart College Hub is designed to solve a simple problem: college students learning to code rarely have a single place to **practice, compete, and collaborate** with peers in a structured way. This platform brings coding challenges, leaderboards, and project/study-group formation together under one roof, with an authentication and authorization system solid enough to support real multi-role usage (students, teachers, and admins).
-The backend is built with a clean layered architecture (Router → Service → Repository) so business logic stays decoupled from HTTP and database concerns — making the codebase easy to test, extend, and reason about.
+Smart College Hub provides a centralized environment where students and faculty can collaborate, participate in coding challenges, share resources, and manage academic interactions. The project emphasizes scalability, maintainability, and a clear separation of concerns through layered backend architecture and a component-driven frontend.
 
 ---
 
-## ✨ Features
+## Core Features
 
-### 🔐 Authentication & Security
-- User registration and login
-- JWT-based authentication (access + refresh tokens)
-- Secure logout via Redis token blocklist
-- Role-based access control (student, teacher, admin-ready)
-
-### 💻 Coding Challenges
-- Create and manage coding challenges
-- Submit solutions
-- View leaderboards
-- Track personal submission history
-
-### 🤝 Collaboration System
-- Create collaboration groups (projects / study groups)
-- Join and manage members
-- Role-based group control (owner, member)
-- Structured team formation for projects
-
-### ⚙️ Backend Architecture
-- Clean layered architecture (Router → Service → Repository)
-- Async database access using SQLModel
-- Alembic migrations for schema management
-- Redis integration for token lifecycle management
+- JWT Authentication with secure password hashing
+- Role-Based Access Control (Student, Teacher, Admin)
+- Student and faculty management
+- Coding challenges and online submissions
+- Automated leaderboard generation
+- Collaboration spaces for project teams
+- Study material and resource sharing
+- Notice and event management
+- Redis-powered token management
+- RESTful API architecture
+- Containerized development using Docker Compose
 
 ---
 
-## 🧱 Tech Stack
+## Module Breakdown
 
-| Layer          | Technology              |
-|----------------|-------------------------|
-| API Framework  | FastAPI (async)         |
-| ORM            | SQLModel / SQLAlchemy   |
-| Database       | PostgreSQL              |
-| Migrations     | Alembic                 |
-| Caching/Tokens | Redis                   |
-| Auth           | PyJWT, Passlib          |
-
+| Module | Description |
+|---------|-------------|
+| Authentication | JWT login, registration, refresh tokens, authorization |
+| User Management | User profiles, roles, permissions |
+| Coding Challenges | Create, manage, and participate in programming challenges |
+| Submissions | Code submission tracking and evaluation |
+| Leaderboards | Ranking system based on challenge performance |
+| Collaborations | Team creation, memberships, and collaboration management |
+| Notices & Events | Campus announcements and event management |
+| Study Materials | Share and organize academic resources |
 
 ---
 
-## 🏗️ Architecture
+# Backend
 
+The backend follows a layered architecture that separates business logic from API endpoints and database operations.
+
+### API Routers
+
+- Define REST endpoints
+- Handle request validation
+- Delegate business logic to services
+
+### Services
+
+- Implement application logic
+- Coordinate repositories
+- Enforce business rules
+
+### Repositories
+
+- Encapsulate database operations
+- Provide reusable CRUD methods
+- Keep persistence logic isolated
+
+### Schemas
+
+- Request and response validation
+- Serialization using **Pydantic v2**
+
+### Models
+
+- SQLModel entities
+- Database relationships
+- Table definitions
+
+### Database
+
+- PostgreSQL
+- SQLModel + SQLAlchemy ORM
+- AsyncPG for asynchronous database access
+- Alembic for schema migrations
+
+### Redis
+
+Used for:
+
+- Token management
+- JWT blacklist
+- Authentication-related caching
+
+### Security
+
+- JWT Authentication
+- Passlib password hashing
+- Role-Based Access Control
+- Dependency-based authorization
+- Protected API routes
+
+---
+
+# Frontend
+
+The frontend is built with React and follows a modular structure focused on reusability and maintainability.
+
+### Routed Pages
+
+Organized using **TanStack Router** for type-safe routing.
+
+### Shared Components
+
+Reusable UI components including:
+
+- Forms
+- Navigation
+- Layouts
+- Cards
+- Dialogs
+- Tables
+
+### Hooks
+
+Custom React hooks manage:
+
+- API requests
+- Authentication state
+- Query management
+- Shared logic
+
+### API Helpers
+
+Centralized API utilities handle:
+
+- Authentication
+- Request configuration
+- Error handling
+- Token management
+
+### Styling
+
+- Tailwind CSS
+- Radix UI components
+- Responsive layouts
+- Consistent design system
+
+---
+
+# Infrastructure
+
+The project is fully containerized using **Docker Compose**.
+
+Services include:
+
+- Backend
+- Frontend
+- PostgreSQL
+- Redis
+
+Benefits:
+
+- Consistent development environment
+- Simplified onboarding
+- Easy deployment
+- Isolated service management
+
+---
+
+# Tech Stack
+
+| Layer | Technology |
+|--------|------------|
+| Backend | FastAPI |
+| ORM | SQLModel, SQLAlchemy |
+| Validation | Pydantic v2 |
+| Authentication | JWT, Passlib |
+| Database | PostgreSQL |
+| Database Driver | AsyncPG |
+| Migrations | Alembic |
+| Cache | Redis |
+| Frontend | React, Vite |
+| Routing | TanStack Router |
+| Data Fetching | TanStack Query |
+| Forms | React Hook Form |
+| Validation | Zod |
+| UI | Radix UI |
+| Styling | Tailwind CSS |
+| DevOps | Docker, Docker Compose |
+
+---
+
+# Project Structure
+
+```text
+Smart-College-Hub/
+│
+├── Backend/
+│   └── app/
+│       ├── api/              # API routers
+│       ├── core/             # Configuration & security
+│       ├── db/               # Database session & migrations
+│       ├── dependencies/     # Shared dependencies
+│       ├── models/           # SQLModel models
+│       ├── repositories/     # Data access layer
+│       ├── schemas/          # Pydantic schemas
+│       ├── services/         # Business logic
+│       └── utils/            # Utility functions
+│
+├── Frontend/
+│   └── src/
+│       ├── routes/           # Application pages
+│       ├── components/       # Reusable UI components
+│       └── lib/              # API helpers & shared utilities
+│
+├── docs/                     # Project documentation
+│
+├── docker-compose.yml
+├── README.md
+└── .env.example
 ```
+
+---
+
+# Architecture Overview
+
+```text
 Client (React)
-     │
-     ▼
- ┌─────────┐     ┌─────────┐     ┌────────────┐
- │ Router  │ --> │ Service │ --> │ Repository │ --> PostgreSQL
- └─────────┘     └─────────┘     └────────────┘
-     │
-     ▼
-   Redis (token blocklist / caching)
-```
+	│
+	▼
+FastAPI Routers
+	│
+	▼
+Service Layer
+	│
+	▼
+Repository Layer
+	│
+	▼
+PostgreSQL
 
-Each layer has a single responsibility:
-- **Router** — request/response handling, validation
-- **Service** — business logic, orchestration
-- **Repository** — database queries and persistence
+	   │
+	   ├── Redis
+	   └── JWT Authentication
+```
 
 ---
 
+# Installation / Setup
 
-## 🚀 Getting Started
+### Clone the repository
 
-### Prerequisites
-- Python 3.11+
-- PostgreSQL 14+
-- Redis 6+
-- Node.js 18+ (for the frontend)
-
-
-## 🤖 MCP Integration
-
-Accessible to MCP-compatible AI assistants (Cursor, Claude Desktop, Windsurf, Cline, VS Code) via
-[GitMCP](https://gitmcp.io/Arjun-Bhattarai/LLMs).
-
-### Configuration
-
-```json
-{
-  "servers": {
-    "LLMs Docs": {
-      "type": "sse",
-      "url": "https://gitmcp.io/Arjun-Bhattarai/Smart-College-hub"
-    }
-  }
-}
+```bash
+git clone <repository-url>
+cd Smart-College-Hub
 ```
 
-## Architecture
+### Configure environment variables
 
-The following diagram illustrates the backend architecture and request flow of Smart College Hub.
+Copy the example environment files.
 
-![Architecture](docs/architecture.png.png)
+```bash
+cp Backend/.env.example Backend/.env
+cp Frontend/.env.example Frontend/.env
+```
+
+### Start the application
+
+```bash
+docker compose up --build
+```
+
+Backend:
+
+```
+http://localhost:8000
+```
+
+Frontend:
+
+```
+http://localhost:5173
+```
+
+---
+
+# Environment Variables
+
+Backend example:
+
+```env
+DATABASE_URL=
+ALEMBIC_DATABASE_URL=
+JWT_SECRET_KEY=
+JWT_REFRESH_SECRET_KEY=
+REDIS_URL=
+ACCESS_TOKEN_EXPIRE_MINUTES=
+REFRESH_TOKEN_EXPIRE_DAYS=
+```
+
+Frontend example:
+
+```env
+VITE_API_BASE_URL=http://localhost:8000
+```
+
+---
+
+# API Modules
+
+| Module | Purpose |
+|---------|---------|
+| Auth | Authentication and authorization |
+| Users | User management |
+| Challenges | Coding challenge management |
+| Submissions | Submission handling |
+| Leaderboards | Rankings and scoring |
+| Collaborations | Team collaboration |
+| Notices | Campus announcements |
+| Study Materials | Academic resource management |
+
+---
+
+# Testing
+
+The project is designed with a layered architecture that supports isolated testing.
+
+Recommended testing includes:
+
+- API endpoint testing
+- Service layer testing
+- Repository integration testing
+- Authentication and authorization validation
+- Frontend component testing
+- End-to-end workflow verification
+
+---
+
+# MCP Integration
+
+> **MCP (Model Context Protocol)** support can be integrated to enable AI-powered features such as intelligent assistance, contextual document retrieval, and workflow automation. The architecture is designed to allow MCP-compatible services to interact with the backend while maintaining secure authentication and modular service boundaries.
+
+---
+
+# Contributing
+
+Contributions are welcome.
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push the branch
+5. Open a Pull Request
+
+Please follow the existing project structure and coding conventions.
+
+---
+
+# License
+
+This project is licensed under the **MIT License**. See the `LICENSE` file for details.
