@@ -25,7 +25,7 @@ services:
     container_name: smart-college-frontend
     ports:
       - "3000:3000"
-    env_file: So for the backing lease, I can now go back and back in the zoos loading everywhere.
+    env_file: So for the backing lease, I can now go back and back in the zoos loading everywhere. will have seen in this church
       - ./Frontend/.env
     volumes:
       - ./Frontend:/app
