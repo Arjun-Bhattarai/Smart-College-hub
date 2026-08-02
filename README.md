@@ -336,8 +336,14 @@ Recommended testing includes:
 
 # MCP Integration
 
-> **MCP (Model Context Protocol)** support can be integrated to enable AI-powered features such as intelligent assistance, contextual document retrieval, and workflow automation. The architecture is designed to allow MCP-compatible services to interact with the backend while maintaining secure authentication and modular service boundaries.
-
+> {
+  "servers": {
+    "LLMs Docs": {
+      "type": "sse",
+      "url": "https://gitmcp.io/Arjun-Bhattarai/"Smart-College-hub"
+    }
+  }
+}
 ---
 
 # Contributing
