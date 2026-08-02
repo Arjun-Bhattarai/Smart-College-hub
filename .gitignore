@@ -1,0 +1,92 @@
+# Python bytecode and runtime artifacts
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Python test, type-check, lint, and coverage artifacts
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+junit.xml
+test-results/
+reports/
+
+# Python virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Node dependencies and package manager logs
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Frontend build and tool output
+dist/
+dist-ssr/
+build/
+.vite/
+.output/
+.vinxi/
+.nitro/
+.tanstack/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.iml
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Environment variables and secrets
+.env
+.env.*
+backend/.env
+frontend/.env
+Backend/.env
+Frontend/.env
+!.env.example
+!backend/.env.example
+!frontend/.env.example
+!Backend/.env.example
+!Frontend/.env.example
+
+# Logs
+*.log
+logs/
+
+# Caches
+.cache/
+.parcel-cache/
+.eslintcache
+.sass-cache/
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+*~
+
+# Docker runtime data
+postgres_data/
+redis_data/
