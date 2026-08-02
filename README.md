@@ -261,3 +261,25 @@ Recommended testing includes:
 }
 ---
 
+---
+
+# System Architecture
+
+The following diagram illustrates the high-level architecture of **Smart College Hub**, including the deployment environment, frontend, backend, service layer, repositories, Redis, and PostgreSQL.
+
+<p align="center">
+  <img src="docs/architecture.png.png.png" alt="Smart College Hub Architecture" width="100%">
+</p>
+
+The architecture follows a clean layered design:
+
+- **Docker Compose** orchestrates the frontend and backend services.
+- **React + TanStack Router** provides the client-side application and communicates with the backend through a centralized API client.
+- **FastAPI** exposes RESTful APIs and delegates business logic to the service layer.
+- **Repositories** encapsulate database access and persistence logic.
+- **PostgreSQL** stores application data, while **Redis** manages token blacklisting and caching.
+- **Alembic** handles database schema migrations.
+
+This architecture promotes **separation of concerns**, **scalability**, **maintainability**, and **ease of deployment**.
+
+---

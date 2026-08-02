@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Python bytecode and runtime artifacts
 __pycache__/
 **/__pycache__/
@@ -91,16 +90,3 @@ logs/
 # Docker runtime data
 postgres_data/
 redis_data/
-=======
-.env
-.venv/
-__pycache__/
-.git/
-__pycache__/
-*.py[cod]
-
-/scripts/
-frontend-handbook.md
-backend_viva_questions_pdf.py
-Smart_College_Hub_Backend_Questions.pdf
->>>>>>> 046d404c74bf3a03d527dbdd21584661e3af2cac
