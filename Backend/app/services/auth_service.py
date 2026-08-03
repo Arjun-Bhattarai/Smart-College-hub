@@ -1,4 +1,5 @@
 from uuid import UUID
+from fastapi import HTTPException
 
 from sqlmodel import select
 from sqlmodel.ext.asyncio.session import AsyncSession
@@ -80,3 +81,21 @@ class AuthService:
         statement = select(User)
         result = await session.exec(statement)
         return result.all()
+
+    async def disable_user(
+        self,
+        user_id: UUID,
+        session: AsyncSession,
+    ):
+        user = await self.get_user_by_id(user_id, session)
+
+        if not user:
+            raise HTTPException(status_code=404, detail="User not found")
+
+        user.is_active = False
+
+        session.add(user)
+        await session.commit()
+        await session.refresh(user)
+
+        return {"message": "User disabled successfully"}

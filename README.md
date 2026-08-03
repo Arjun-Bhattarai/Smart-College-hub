@@ -1,251 +1,95 @@
 # Smart College Hub
 
-A modern full-stack college collaboration platform designed to streamline communication, academic collaboration, and coding activities within educational institutions. Built with **FastAPI**, **React**, **PostgreSQL**, and **Docker**, the platform follows a clean, modular architecture with secure JWT-based authentication and role-based authorization.
+Smart College Hub is a full-stack college collaboration platform with a FastAPI backend and a React/Vite frontend. The current implementation focuses on authentication, coding challenges, submissions, leaderboards, and collaboration management.
 
----
+## Current scope
 
-## Overview
+The repository currently includes the following working areas:
 
-Smart College Hub provides a centralized environment where students and faculty can collaborate, participate in coding challenges, share resources, and manage academic interactions. The project emphasizes scalability, maintainability, and a clear separation of concerns through layered backend architecture and a component-driven frontend.
+- Authentication and user management
+- Role-based access control for user, student, teacher, and admin
+- Coding challenges with create, list, detail, submit, review, and delete flows
+- Challenge submissions and a leaderboard
+- Collaboration creation, updates, deletion, join requests, and membership management
+- Docker-based local development with backend, frontend, PostgreSQL, and Redis services
 
----
+## Implemented features
 
-## Core Features
+### Authentication
 
-- JWT Authentication with secure password hashing
-- Role-Based Access Control (Student, Teacher, Admin)
-- Student and faculty management
-- Coding challenges and online submissions
-- Automated leaderboard generation
-- Collaboration spaces for project teams
-- Study material and resource sharing
-- Notice and event management
-- Redis-powered token management
-- RESTful API architecture
-- Containerized development using Docker Compose
+The backend exposes authentication routes for:
 
----
+- signup
+- login
+- logout
+- profile retrieval
+- user listing for admins
 
-## Module Breakdown
+Authentication uses JWT access and refresh tokens, password hashing, and role-based route protection.
 
-| Module | Description |
-|---------|-------------|
-| Authentication | JWT login, registration, refresh tokens, authorization |
-| User Management | User profiles, roles, permissions |
-| Coding Challenges | Create, manage, and participate in programming challenges |
-| Submissions | Code submission tracking and evaluation |
-| Leaderboards | Ranking system based on challenge performance |
-| Collaborations | Team creation, memberships, and collaboration management |
-| Notices & Events | Campus announcements and event management |
-| Study Materials | Share and organize academic resources |
+### Coding challenges
 
----
+The challenge module supports:
 
-# Backend
+- creating challenges (admin only)
+- listing all challenges
+- viewing a single challenge
+- submitting solutions for a challenge
+- viewing personal submissions
+- viewing the leaderboard
+- reviewing submissions (admin only)
+- deleting challenges (admin only)
 
-The backend follows a layered architecture that separates business logic from API endpoints and database operations.
+### Collaborations
 
-### API Routers
+The collaboration module supports:
 
-- Define REST endpoints
-- Handle request validation
-- Delegate business logic to services
+- creating collaborations
+- fetching collaboration lists and details
+- updating and deleting a collaboration
+- managing join requests
+- managing memberships
 
-### Services
-
-- Implement application logic
-- Coordinate repositories
-- Enforce business rules
-
-### Repositories
-
-- Encapsulate database operations
-- Provide reusable CRUD methods
-- Keep persistence logic isolated
-
-### Schemas
-
-- Request and response validation
-- Serialization using **Pydantic v2**
-
-### Models
-
-- SQLModel entities
-- Database relationships
-- Table definitions
-
-### Database
-
-- PostgreSQL
-- SQLModel + SQLAlchemy ORM
-- AsyncPG for asynchronous database access
-- Alembic for schema migrations
-
-### Redis
-
-Used for:
-
-- Token management
-- JWT blacklist
-- Authentication-related caching
-
-### Security
-
-- JWT Authentication
-- Passlib password hashing
-- Role-Based Access Control
-- Dependency-based authorization
-- Protected API routes
-
----
-
-# Frontend
-
-The frontend is built with React and follows a modular structure focused on reusability and maintainability.
-
-### Routed Pages
-
-Organized using **TanStack Router** for type-safe routing.
-
-### Shared Components
-
-Reusable UI components including:
-
-- Forms
-- Navigation
-- Layouts
-- Cards
-- Dialogs
-- Tables
-
-### Hooks
-
-Custom React hooks manage:
-
-- API requests
-- Authentication state
-- Query management
-- Shared logic
-
-### API Helpers
-
-Centralized API utilities handle:
-
-- Authentication
-- Request configuration
-- Error handling
-- Token management
-
-### Styling
-
-- Tailwind CSS
-- Radix UI components
-- Responsive layouts
-- Consistent design system
-
----
-
-# Infrastructure
-
-The project is fully containerized using **Docker Compose**.
-
-Services include:
-
-- Backend
-- Frontend
-- PostgreSQL
-- Redis
-
-Benefits:
-
-- Consistent development environment
-- Simplified onboarding
-- Easy deployment
-- Isolated service management
-
----
-
-# Tech Stack
+## Tech stack
 
 | Layer | Technology |
 |--------|------------|
 | Backend | FastAPI |
 | ORM | SQLModel, SQLAlchemy |
-| Validation | Pydantic v2 |
-| Authentication | JWT, Passlib |
+| Validation | Pydantic |
+| Auth | JWT, Passlib, bcrypt |
 | Database | PostgreSQL |
-| Database Driver | AsyncPG |
+| Database driver | AsyncPG |
 | Migrations | Alembic |
 | Cache | Redis |
 | Frontend | React, Vite |
 | Routing | TanStack Router |
-| Data Fetching | TanStack Query |
+| Data fetching | TanStack Query |
 | Forms | React Hook Form |
 | Validation | Zod |
 | UI | Radix UI |
 | Styling | Tailwind CSS |
 | DevOps | Docker, Docker Compose |
 
----
+## Backend structure
 
+The backend follows a layered architecture:
 
+- app/api/v1: route definitions
+- app/services: business logic
+- app/repositories: persistence logic
+- app/schemas: request and response validation
+- app/models: database models
+- app/core: configuration and security helpers
+- app/db: database and Redis setup
 
----
+## Frontend structure
 
-# Architecture Overview
+The frontend is organized around reusable components, route-based screens, and shared hooks and utilities.
 
-```text
-Client (React)
-	│
-	▼
-FastAPI Routers
-	│
-	▼
-Service Layer
-	│
-	▼
-Repository Layer
-	│
-	▼
-PostgreSQL
+## Notes
 
-	   │
-	   ├── Redis
-	   └── JWT Authentication
-```
-
----
-
-
-
-
-# API Modules
-
-| Module | Purpose |
-|---------|---------|
-| Auth | Authentication and authorization |
-| Users | User management |
-| Challenges | Coding challenge management |
-| Submissions | Submission handling |
-| Leaderboards | Rankings and scoring |
-| Collaborations | Team collaboration |
-| Notices | Campus announcements |
-| Study Materials | Academic resource management |
-
----
-
-# Testing
-
-The project is designed with a layered architecture that supports isolated testing.
-
-Recommended testing includes:
-
-- API endpoint testing
-- Service layer testing
-- Repository integration testing
-- Authentication and authorization validation
-- Frontend component testing
-- End-to-end workflow verification
+This repository is currently focused on the features above. Some broader ideas mentioned in older drafts, such as notices, events, and study-material sharing, are not yet implemented as first-class modules in the current codebase.
 
 ---
 

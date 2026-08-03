@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel.ext.asyncio.session import AsyncSession
 
+from app.models.user import User
 from app.schemas.user_schema import UserCreate, UserLogin, UserResponse
 from app.services.auth_service import AuthService
 from app.db.session import get_session
@@ -92,3 +93,14 @@ async def get_users(
     session: AsyncSession = Depends(get_session),
 ):
     return await auth_service.get_all_users(session)
+
+
+from uuid import UUID
+
+@auth_router.patch("/users/{user_id}/disable")
+async def disable_user(
+    user_id: UUID,
+    session: AsyncSession = Depends(get_session),
+    current_user: User = Depends(RoleChecker(["admin"])),
+):
+    return await auth_service.disable_user(user_id, session)

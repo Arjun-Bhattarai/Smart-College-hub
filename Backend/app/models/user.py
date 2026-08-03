@@ -54,3 +54,13 @@ class User(SQLModel, table=True):
     )
 
     password: str = Field(nullable=False)
+    
+    is_active: bool = Field(
+    sa_column=Column(
+        sa.Boolean,
+        nullable=False,
+        server_default=sa.true(),
+    )
+)
+
+    
