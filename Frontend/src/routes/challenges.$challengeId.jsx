@@ -21,6 +21,7 @@ function ChallengeDetail() {
     const [language, setLanguage] = useState("Python");
     const [code, setCode] = useState("");
     const [feedback, setFeedback] = useState(null);
+
     const submit = useMutation({
         mutationFn: () => api(`/challenges/${challengeId}/submit`, {
             method: "POST",
@@ -38,6 +39,7 @@ function ChallengeDetail() {
     if (q.data?.starter_code && code === "" && !feedback) {
         setCode(q.data.starter_code);
     }
+
     return (<AppShell>
       <div className="mb-6">
         <Link to="/challenges" className="text-xs font-bold text-muted hover:text-primary">

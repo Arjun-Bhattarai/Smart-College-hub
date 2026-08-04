@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from pathlib import Path
 
 from app.api.v1.auth import auth_router
 from app.api.v1.token import token_router
@@ -24,6 +26,7 @@ app.add_middleware(
         "http://127.0.0.1:5173",
         "http://localhost:3000",
         "http://127.0.0.1:3000",
+        
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -35,3 +38,7 @@ app.include_router(challenge_routes, prefix="/challenges", tags=["Challenges"])
 app.include_router(collaboration_router, prefix="/collaborations", tags=["Collaborations"])
 app.include_router(collaboration_join_request_router, prefix="/collaborations", tags=["Collaboration Join Requests"])
 app.include_router(collaboration_membership_router, prefix="/collaborations", tags=["Collaboration Membership"])
+
+uploads_dir = Path(__file__).resolve().parent.parent / "uploads"
+uploads_dir.mkdir(parents=True, exist_ok=True)
+app.mount("/uploads", StaticFiles(directory=str(uploads_dir)), name="uploads")

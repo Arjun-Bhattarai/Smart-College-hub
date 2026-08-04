@@ -4,7 +4,7 @@
 << /Type /Catalog /Pages 2 0 R >>
 endobj
 2 0 obj
-<< /Type /Pages /Kids [6 0 R 8 0 R 10 0 R 12 0 R 14 0 R 16 0 R 18 0 R] /Count 7 >>
+<< /Type /Pages /Kids [6 0 R 8 0 R 10 0 R 12 0 R 14 0 R 16 0 R 18 0 R 20 0 R 22 0 R] /Count 9 >>
 endobj
 3 0 obj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
@@ -345,7 +345,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 15 0 R >>
 endobj
 17 0 obj
-<< /Length 3264 >>
+<< /Length 3975 >>
 stream
 BT /F2 10 Tf 58 800 Td (127. What is Uvicorn?) Tj ET
 BT /F1 9 Tf 72 787 Td (Answer: An ASGI server used to run FastAPI applications.) Tj ET
@@ -385,35 +385,158 @@ BT /F2 10 Tf 58 286 Td (142. Explain coding challenge module.) Tj ET
 BT /F1 9 Tf 72 273 Td (Answer: It manages challenges and student submissions/feedback.) Tj ET
 BT /F2 10 Tf 58 256 Td (143. What would you improve next?) Tj ET
 BT /F1 9 Tf 72 243 Td (Answer: Testing, deployment, notifications, rate limiting, and stronger production security.) Tj ET
+BT /F2 13 Tf 50 218 Td (Extended Defense Questions) Tj ET
+BT /F2 10 Tf 58 198 Td (144. What is Smart College Hub?) Tj ET
+BT /F1 9 Tf 72 185 Td (Answer: It is a full-stack college collaboration platform for authentication, coding) Tj ET
+BT /F1 9 Tf 72 173 Td (challenges, submissions, leaderboards, and collaboration management.) Tj ET
+BT /F2 10 Tf 58 156 Td (145. What problem does it solve?) Tj ET
+BT /F1 9 Tf 72 143 Td (Answer: It centralizes student learning, coding practice, and team collaboration in one) Tj ET
+BT /F1 9 Tf 72 131 Td (system.) Tj ET
+BT /F2 10 Tf 58 114 Td (146. Who are the users of this system?) Tj ET
+BT /F1 9 Tf 72 101 Td (Answer: The main roles are admin, teacher, and student.) Tj ET
 BT /F1 8 Tf 50 28 Td (Smart College Hub Backend Viva Questions | Page 7) Tj ET
 endstream
 endobj
 18 0 obj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 17 0 R >>
 endobj
+19 0 obj
+<< /Length 4105 >>
+stream
+BT /F2 10 Tf 58 800 Td (147. What are the core features of the project?) Tj ET
+BT /F1 9 Tf 72 787 Td (Answer: Signup, login, role-based access, coding challenge management, submission review,) Tj ET
+BT /F1 9 Tf 72 775 Td (leaderboard, collaboration groups, join requests, and member management.) Tj ET
+BT /F2 10 Tf 58 758 Td (148. Why did you choose FastAPI for the backend?) Tj ET
+BT /F1 9 Tf 72 745 Td (Answer: FastAPI is async-friendly, fast, and gives automatic API documentation.) Tj ET
+BT /F2 10 Tf 58 728 Td (149. Why did you choose React for the frontend?) Tj ET
+BT /F1 9 Tf 72 715 Td (Answer: React is good for building interactive user interfaces and dynamic screens.) Tj ET
+BT /F2 10 Tf 58 698 Td (150. Why did you use PostgreSQL?) Tj ET
+BT /F1 9 Tf 72 685 Td (Answer: It is reliable and suitable for relational data like users, challenges, submissions,) Tj ET
+BT /F1 9 Tf 72 673 Td (and collaborations.) Tj ET
+BT /F2 10 Tf 58 656 Td (151. Why is Redis used in the project?) Tj ET
+BT /F1 9 Tf 72 643 Td (Answer: Redis is used for token blacklisting and fast temporary backend storage.) Tj ET
+BT /F2 10 Tf 58 626 Td (152. Why did you use Docker?) Tj ET
+BT /F1 9 Tf 72 613 Td (Answer: Docker makes the setup consistent and helps run backend, frontend, PostgreSQL, and) Tj ET
+BT /F1 9 Tf 72 601 Td (Redis together.) Tj ET
+BT /F2 10 Tf 58 584 Td (153. What is Alembic used for?) Tj ET
+BT /F1 9 Tf 72 571 Td (Answer: Alembic manages database schema migrations.) Tj ET
+BT /F2 10 Tf 58 554 Td (154. How does user authentication work?) Tj ET
+BT /F1 9 Tf 72 541 Td (Answer: Users sign up and log in with email and password, then receive JWT access and) Tj ET
+BT /F1 9 Tf 72 529 Td (refresh tokens.) Tj ET
+BT /F2 10 Tf 58 512 Td (155. What is the difference between access token and refresh token?) Tj ET
+BT /F1 9 Tf 72 499 Td (Answer: The access token is used for API authentication, while the refresh token is used to) Tj ET
+BT /F1 9 Tf 72 487 Td (obtain a new access token.) Tj ET
+BT /F2 10 Tf 58 470 Td (156. How is password security handled?) Tj ET
+BT /F1 9 Tf 72 457 Td (Answer: Passwords are hashed using bcrypt through Passlib.) Tj ET
+BT /F2 10 Tf 58 440 Td (157. What happens during logout?) Tj ET
+BT /F1 9 Tf 72 427 Td (Answer: The access token JTI is blacklisted so the token can no longer be used.) Tj ET
+BT /F2 10 Tf 58 410 Td (158. What roles exist in the system?) Tj ET
+BT /F1 9 Tf 72 397 Td (Answer: Admin, student, and teacher.) Tj ET
+BT /F2 10 Tf 58 380 Td (159. Who can create a challenge?) Tj ET
+BT /F1 9 Tf 72 367 Td (Answer: Only admins.) Tj ET
+BT /F2 10 Tf 58 350 Td (160. Who can submit to a challenge?) Tj ET
+BT /F1 9 Tf 72 337 Td (Answer: Authenticated users.) Tj ET
+BT /F2 10 Tf 58 320 Td (161. What happens after a submission is made?) Tj ET
+BT /F1 9 Tf 72 307 Td (Answer: It is stored with the user ID, challenge ID, code, and programming language.) Tj ET
+BT /F2 10 Tf 58 290 Td (162. Who reviews submissions?) Tj ET
+BT /F1 9 Tf 72 277 Td (Answer: Admins review submissions and assign score, status, and feedback.) Tj ET
+BT /F2 10 Tf 58 260 Td (163. Can a challenge be deleted?) Tj ET
+BT /F1 9 Tf 72 247 Td (Answer: Yes, but only by an admin.) Tj ET
+BT /F2 10 Tf 58 230 Td (164. What is the collaboration feature?) Tj ET
+BT /F1 9 Tf 72 217 Td (Answer: It allows users to create project groups, request membership, and manage team) Tj ET
+BT /F1 9 Tf 72 205 Td (participation.) Tj ET
+BT /F2 10 Tf 58 188 Td (165. What happens when someone creates a collaboration?) Tj ET
+BT /F1 9 Tf 72 175 Td (Answer: The creator is automatically added as a member.) Tj ET
+BT /F2 10 Tf 58 158 Td (166. How do users join a collaboration?) Tj ET
+BT /F1 9 Tf 72 145 Td (Answer: They send a join request.) Tj ET
+BT /F2 10 Tf 58 128 Td (167. Can a member leave a collaboration?) Tj ET
+BT /F1 9 Tf 72 115 Td (Answer: Yes.) Tj ET
+BT /F2 10 Tf 58 98 Td (168. What information does a collaboration store?) Tj ET
+BT /F1 9 Tf 72 85 Td (Answer: Title, description, max members, required skills, creator, and timestamps.) Tj ET
+BT /F1 8 Tf 50 28 Td (Smart College Hub Backend Viva Questions | Page 8) Tj ET
+endstream
+endobj
+20 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 19 0 R >>
+endobj
+21 0 obj
+<< /Length 3717 >>
+stream
+BT /F2 10 Tf 58 800 Td (169. What is the frontend built with?) Tj ET
+BT /F1 9 Tf 72 787 Td (Answer: React and Vite.) Tj ET
+BT /F2 10 Tf 58 770 Td (170. Why did you use TanStack Router?) Tj ET
+BT /F1 9 Tf 72 757 Td (Answer: It provides structured route-based navigation.) Tj ET
+BT /F2 10 Tf 58 740 Td (171. Why did you use TanStack Query?) Tj ET
+BT /F1 9 Tf 72 727 Td (Answer: It helps manage server state, caching, and data fetching.) Tj ET
+BT /F2 10 Tf 58 710 Td (172. Why did you use React Hook Form and Zod?) Tj ET
+BT /F1 9 Tf 72 697 Td (Answer: They simplify form handling and validation.) Tj ET
+BT /F2 10 Tf 58 680 Td (173. Why did you use Radix UI and Tailwind CSS?) Tj ET
+BT /F1 9 Tf 72 667 Td (Answer: Radix gives accessible UI primitives, and Tailwind helps build the design quickly) Tj ET
+BT /F1 9 Tf 72 655 Td (and consistently.) Tj ET
+BT /F2 10 Tf 58 638 Td (174. What is the purpose of repositories in your backend?) Tj ET
+BT /F1 9 Tf 72 625 Td (Answer: They isolate database operations from business logic.) Tj ET
+BT /F2 10 Tf 58 608 Td (175. Why are services separate from routes?) Tj ET
+BT /F1 9 Tf 72 595 Td (Answer: Routes handle HTTP requests, while services contain business rules.) Tj ET
+BT /F2 10 Tf 58 578 Td (176. Why are schemas separate from models?) Tj ET
+BT /F1 9 Tf 72 565 Td (Answer: Schemas validate API input and output, while models represent database entities.) Tj ET
+BT /F2 10 Tf 58 548 Td (177. How do you prevent unauthorized access?) Tj ET
+BT /F1 9 Tf 72 535 Td (Answer: Through JWT authentication and role-based access control.) Tj ET
+BT /F2 10 Tf 58 518 Td (178. How do you reduce token misuse?) Tj ET
+BT /F1 9 Tf 72 505 Td (Answer: By using refresh tokens and blacklisting logged-out access tokens.) Tj ET
+BT /F2 10 Tf 58 488 Td (179. What are the security strengths of your project?) Tj ET
+BT /F1 9 Tf 72 475 Td (Answer: Password hashing, token-based auth, role checks, and protected admin routes.) Tj ET
+BT /F2 10 Tf 58 458 Td (180. What are the limitations of the current version?) Tj ET
+BT /F1 9 Tf 72 445 Td (Answer: Not all broader college features like notices, events, and study material sharing) Tj ET
+BT /F1 9 Tf 72 433 Td (are implemented.) Tj ET
+BT /F2 10 Tf 58 416 Td (181. How would you improve the project in the future?) Tj ET
+BT /F1 9 Tf 72 403 Td (Answer: Add notices, events, chat, file sharing, notifications, better analytics, and) Tj ET
+BT /F1 9 Tf 72 391 Td (possibly real-time collaboration.) Tj ET
+BT /F2 10 Tf 58 374 Td (182. How can this project be run locally?) Tj ET
+BT /F1 9 Tf 72 361 Td (Answer: Through Docker Compose or by running the backend and frontend separately with the) Tj ET
+BT /F1 9 Tf 72 349 Td (configured environment.) Tj ET
+BT /F2 10 Tf 58 332 Td (183. What did you learn from building this project?) Tj ET
+BT /F1 9 Tf 72 319 Td (Answer: API design, authentication, role-based control, database modeling, frontend routing,) Tj ET
+BT /F1 9 Tf 72 307 Td (and full-stack integration.) Tj ET
+BT /F2 10 Tf 58 290 Td (184. If the examiner asks why your project matters, what will you say?) Tj ET
+BT /F1 9 Tf 72 277 Td (Answer: It demonstrates a realistic college platform that combines authentication, teamwork,) Tj ET
+BT /F1 9 Tf 72 265 Td (and coding evaluation in one system.) Tj ET
+BT /F2 10 Tf 58 248 Td (185. If the examiner asks for the main highlight of your project, what should you) Tj ET
+BT /F2 10 Tf 58 235 Td (answer?) Tj ET
+BT /F1 9 Tf 72 222 Td (Answer: The strongest part is the integration of coding challenges, submission review,) Tj ET
+BT /F1 9 Tf 72 210 Td (leaderboard, and collaboration management with secure role-based access.) Tj ET
+BT /F1 8 Tf 50 28 Td (Smart College Hub Backend Viva Questions | Page 9) Tj ET
+endstream
+endobj
+22 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 21 0 R >>
+endobj
 xref
-0 19
+0 23
 0000000000 65535 f 
 0000000015 00000 n 
 0000000064 00000 n 
-0000000162 00000 n 
-0000000232 00000 n 
-0000000307 00000 n 
-0000004453 00000 n 
-0000004589 00000 n 
-0000008332 00000 n 
-0000008468 00000 n 
-0000012144 00000 n 
-0000012281 00000 n 
-0000015927 00000 n 
-0000016065 00000 n 
-0000020080 00000 n 
-0000020218 00000 n 
-0000023987 00000 n 
-0000024125 00000 n 
-0000027442 00000 n 
+0000000176 00000 n 
+0000000246 00000 n 
+0000000321 00000 n 
+0000004467 00000 n 
+0000004603 00000 n 
+0000008346 00000 n 
+0000008482 00000 n 
+0000012158 00000 n 
+0000012295 00000 n 
+0000015941 00000 n 
+0000016079 00000 n 
+0000020094 00000 n 
+0000020232 00000 n 
+0000024001 00000 n 
+0000024139 00000 n 
+0000028167 00000 n 
+0000028305 00000 n 
+0000032463 00000 n 
+0000032601 00000 n 
+0000036371 00000 n 
 trailer
-<< /Size 19 /Root 1 0 R >>
+<< /Size 23 /Root 1 0 R >>
 startxref
-27580
+36509
 %%EOF

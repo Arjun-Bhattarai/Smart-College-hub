@@ -5,6 +5,8 @@ from sqlmodel import select
 from sqlmodel.ext.asyncio.session import AsyncSession
 
 from app.models.coding_challenge import CodingChallenge
+from app.models.challenge_resource import ChallengeResource
+from app.models.challenge_resource_request import ChallengeResourceRequest
 from app.models.submission import Submission
 
 
@@ -63,3 +65,55 @@ class ChallengeRepository:
 
         await session.delete(challenge)
         await session.commit()
+
+    async def create_resource(
+        self,
+        session: AsyncSession,
+        resource: ChallengeResource,
+    ) -> ChallengeResource:
+        session.add(resource)
+        await session.commit()
+        await session.refresh(resource)
+
+        return resource
+
+    async def list_resources_by_challenge(
+        self,
+        session: AsyncSession,
+        challenge_id: UUID,
+    ) -> list[ChallengeResource]:
+        statement = (
+            select(ChallengeResource)
+            .where(ChallengeResource.challenge_id == challenge_id)
+            .order_by(ChallengeResource.created_at.desc())
+        )
+
+        result = await session.exec(statement)
+
+        return result.all()
+
+    async def create_resource_request(
+        self,
+        session: AsyncSession,
+        resource_request: ChallengeResourceRequest,
+    ) -> ChallengeResourceRequest:
+        session.add(resource_request)
+        await session.commit()
+        await session.refresh(resource_request)
+
+        return resource_request
+
+    async def list_resource_requests_by_challenge(
+        self,
+        session: AsyncSession,
+        challenge_id: UUID,
+    ) -> list[ChallengeResourceRequest]:
+        statement = (
+            select(ChallengeResourceRequest)
+            .where(ChallengeResourceRequest.challenge_id == challenge_id)
+            .order_by(ChallengeResourceRequest.created_at.desc())
+        )
+
+        result = await session.exec(statement)
+
+        return result.all()

@@ -31,12 +31,12 @@ export function Textarea(props) {
 export function Select(props) {
     return <select {...props} className={`${inputCls} ${props.className ?? ""}`}/>;
 }
-export function Card({ children, className = "", interactive = false, }) {
+export function Card({ children, className = "", interactive = false, ...rest }) {
     const base = "bg-card border border-border rounded-xl shadow-card";
     const inter = interactive
         ? "transition-all duration-200 hover:border-primary/30 hover:-translate-y-0.5 hover:shadow-elevated"
         : "";
-    return <div className={`${base} ${inter} ${className}`}>{children}</div>;
+    return <div className={`${base} ${inter} ${className}`} {...rest}>{children}</div>;
 }
 export function Badge({ children, tone = "neutral", }) {
     const tones = {

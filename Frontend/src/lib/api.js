@@ -1,4 +1,5 @@
 export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:8000";
+
 const ACCESS_KEY = "sch_access_token";
 const REFRESH_KEY = "sch_refresh_token";
 const USER_KEY = "sch_user";
@@ -66,17 +67,19 @@ async function refreshAccessToken() {
 export async function api(path, opts = {}) {
     const { method = "GET", body, auth = false, useRefresh = false } = opts;
     const headers = {};
-    if (body !== undefined)
+    const isFormData = typeof FormData !== "undefined" && body instanceof FormData;
+    if (body !== undefined && !isFormData)
         headers["Content-Type"] = "application/json";
     if (auth) {
         const token = useRefresh ? tokenStore.getRefresh() : tokenStore.getAccess();
         if (token)
             headers.Authorization = `Bearer ${token}`;
     }
-    const doFetch = () => fetch(`${API_BASE_URL}${path}`, {
+    const doFetch = () =>
+    fetch(`${API_BASE_URL}${path}`, {
         method,
         headers,
-        body: body !== undefined ? JSON.stringify(body) : undefined,
+        body: body !== undefined ? (isFormData ? body : JSON.stringify(body)) : undefined,
     });
     let res = await doFetch();
     if (res.status === 401 && auth && !useRefresh) {

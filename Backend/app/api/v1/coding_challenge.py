@@ -1,6 +1,6 @@
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile
 from sqlmodel.ext.asyncio.session import AsyncSession
 
 from app.db.session import get_session
@@ -9,6 +9,7 @@ from app.dependencies.auth import (
     get_current_user,
 )
 from app.models.user import User
+from app.schemas.challenge_resource_schema import ChallengeResourceRequestCreate
 from app.schemas.coding_challenge_schema import ChallengeCreate
 from app.schemas.submission_schema import (
     SubmissionCreate,
@@ -81,6 +82,138 @@ async def get_challenge(
     return challenge
 
 
+@challenge_routes.get("/{challenge_id}/resources")
+async def get_challenge_resources(
+    challenge_id: UUID,
+    session: AsyncSession = Depends(get_session),
+):
+    challenge = await challenge_service.get_challenge(
+        session,
+        challenge_id,
+    )
+
+    if not challenge:
+        raise HTTPException(
+            status_code=404,
+            detail="Challenge not found.",
+        )
+
+    resources = await challenge_service.list_resources(
+        session,
+        challenge_id,
+    )
+
+    return [
+        {
+            "id": resource.id,
+            "challenge_id": resource.challenge_id,
+            "uploader_id": resource.uploader_id,
+            "title": resource.title,
+            "description": resource.description,
+            "file_name": resource.file_name,
+            "file_url": f"/uploads/{resource.file_path}",
+            "created_at": resource.created_at,
+        }
+        for resource in resources
+    ]
+
+
+@challenge_routes.get("/{challenge_id}/resource-requests")
+async def get_challenge_resource_requests(
+    challenge_id: UUID,
+    session: AsyncSession = Depends(get_session),
+):
+    challenge = await challenge_service.get_challenge(
+        session,
+        challenge_id,
+    )
+
+    if not challenge:
+        raise HTTPException(
+            status_code=404,
+            detail="Challenge not found.",
+        )
+
+    return await challenge_service.list_resource_requests(
+        session,
+        challenge_id,
+    )
+
+
+@challenge_routes.post("/{challenge_id}/resource-requests")
+async def create_challenge_resource_request(
+    challenge_id: UUID,
+    payload: ChallengeResourceRequestCreate,
+    current_user: User = Depends(get_current_user),
+    session: AsyncSession = Depends(get_session),
+):
+    challenge = await challenge_service.get_challenge(
+        session,
+        challenge_id,
+    )
+
+    if not challenge:
+        raise HTTPException(
+            status_code=404,
+            detail="Challenge not found.",
+        )
+
+    return await challenge_service.create_resource_request(
+        session,
+        challenge_id,
+        current_user.uid,
+        payload.message,
+    )
+
+
+@challenge_routes.post("/{challenge_id}/resources/upload")
+async def upload_challenge_resource(
+    challenge_id: UUID,
+    title: str = Form(...),
+    description: str | None = Form(default=None),
+    file: UploadFile = File(...),
+    current_user: User = Depends(get_current_user),
+    session: AsyncSession = Depends(get_session),
+):
+    challenge = await challenge_service.get_challenge(
+        session,
+        challenge_id,
+    )
+
+    if not challenge:
+        raise HTTPException(
+            status_code=404,
+            detail="Challenge not found.",
+        )
+
+    content = await file.read()
+
+    if not content:
+        raise HTTPException(
+            status_code=400,
+            detail="Uploaded file is empty.",
+        )
+
+    resource = await challenge_service.upload_resource(
+        session,
+        challenge_id,
+        current_user.uid,
+        title,
+        description,
+        file.filename or "resource",
+        content,
+    )
+
+    return {
+        "id": resource.id,
+        "challenge_id": resource.challenge_id,
+        "uploader_id": resource.uploader_id,
+        "title": resource.title,
+        "description": resource.description,
+        "file_name": resource.file_name,
+        "file_url": f"/uploads/{resource.file_path}",
+        "created_at": resource.created_at,
+    }
 
 
 @challenge_routes.post("/{challenge_id}/submit")
