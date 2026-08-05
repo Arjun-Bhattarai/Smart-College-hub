@@ -4,7 +4,7 @@ from uuid import UUID, uuid4
 from sqlmodel import Field, SQLModel
 
 
-class ChallengeResource(SQLModel, table=True):
+class Resource(SQLModel, table=True):
     __tablename__ = "challenge_resources"
 
     id: UUID = Field(
@@ -12,9 +12,11 @@ class ChallengeResource(SQLModel, table=True):
         primary_key=True,
     )
 
-    challenge_id: UUID = Field(
+    challenge_id: UUID | None = Field(
+        default=None,
         foreign_key="coding_challenges.id",
         index=True,
+        nullable=True,
     )
 
     uploader_id: UUID = Field(

@@ -16,6 +16,7 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as LeaderboardRouteImport } from './routes/leaderboard'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
 import { Route as CollaborationsIndexRouteImport } from './routes/collaborations.index'
 import { Route as ChallengesIndexRouteImport } from './routes/challenges.index'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
@@ -66,6 +67,11 @@ const DashboardRoute = DashboardRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesIndexRoute = ResourcesIndexRouteImport.update({
+  id: '/resources/',
+  path: '/resources/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CollaborationsIndexRoute = CollaborationsIndexRouteImport.update({
@@ -169,6 +175,7 @@ export interface FileRoutesByFullPath {
   '/admin/': typeof AdminIndexRoute
   '/challenges/': typeof ChallengesIndexRoute
   '/collaborations/': typeof CollaborationsIndexRoute
+  '/resources/': typeof ResourcesIndexRoute
   '/admin/challenges/new': typeof AdminChallengesNewRoute
   '/collaborations/$collaborationId/edit': typeof CollaborationsCollaborationIdEditRoute
   '/collaborations/$collaborationId/members': typeof CollaborationsCollaborationIdMembersRoute
@@ -194,6 +201,7 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminIndexRoute
   '/challenges': typeof ChallengesIndexRoute
   '/collaborations': typeof CollaborationsIndexRoute
+  '/resources': typeof ResourcesIndexRoute
   '/admin/challenges/new': typeof AdminChallengesNewRoute
   '/collaborations/$collaborationId/edit': typeof CollaborationsCollaborationIdEditRoute
   '/collaborations/$collaborationId/members': typeof CollaborationsCollaborationIdMembersRoute
@@ -220,6 +228,7 @@ export interface FileRoutesById {
   '/admin/': typeof AdminIndexRoute
   '/challenges/': typeof ChallengesIndexRoute
   '/collaborations/': typeof CollaborationsIndexRoute
+  '/resources/': typeof ResourcesIndexRoute
   '/admin/challenges/new': typeof AdminChallengesNewRoute
   '/collaborations/$collaborationId/edit': typeof CollaborationsCollaborationIdEditRoute
   '/collaborations/$collaborationId/members': typeof CollaborationsCollaborationIdMembersRoute
@@ -247,6 +256,7 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/challenges/'
     | '/collaborations/'
+    | '/resources/'
     | '/admin/challenges/new'
     | '/collaborations/$collaborationId/edit'
     | '/collaborations/$collaborationId/members'
@@ -272,6 +282,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/challenges'
     | '/collaborations'
+    | '/resources'
     | '/admin/challenges/new'
     | '/collaborations/$collaborationId/edit'
     | '/collaborations/$collaborationId/members'
@@ -297,6 +308,7 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/challenges/'
     | '/collaborations/'
+    | '/resources/'
     | '/admin/challenges/new'
     | '/collaborations/$collaborationId/edit'
     | '/collaborations/$collaborationId/members'
@@ -323,6 +335,7 @@ export interface RootRouteChildren {
   AdminIndexRoute: typeof AdminIndexRoute
   ChallengesIndexRoute: typeof ChallengesIndexRoute
   CollaborationsIndexRoute: typeof CollaborationsIndexRoute
+  ResourcesIndexRoute: typeof ResourcesIndexRoute
   AdminChallengesNewRoute: typeof AdminChallengesNewRoute
   CollaborationsCollaborationIdEditRoute: typeof CollaborationsCollaborationIdEditRoute
   CollaborationsCollaborationIdMembersRoute: typeof CollaborationsCollaborationIdMembersRoute
@@ -385,6 +398,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources/': {
+      id: '/resources/'
+      path: '/resources'
+      fullPath: '/resources/'
+      preLoaderRoute: typeof ResourcesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/collaborations/': {
@@ -515,6 +535,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminIndexRoute: AdminIndexRoute,
   ChallengesIndexRoute: ChallengesIndexRoute,
   CollaborationsIndexRoute: CollaborationsIndexRoute,
+  ResourcesIndexRoute: ResourcesIndexRoute,
   AdminChallengesNewRoute: AdminChallengesNewRoute,
   CollaborationsCollaborationIdEditRoute:
     CollaborationsCollaborationIdEditRoute,

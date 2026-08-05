@@ -4,21 +4,22 @@ from uuid import UUID
 from pydantic import BaseModel
 
 
-class ChallengeResourceRequestCreate(BaseModel):
+class ResourceRequestCreate(BaseModel):
     message: str
+    challenge_id: UUID | None = None
 
 
-class ChallengeResourceRequestResponse(BaseModel):
+class ResourceRequestResponse(BaseModel):
     id: UUID
-    challenge_id: UUID
+    challenge_id: UUID | None = None
     requester_id: UUID
     message: str
     created_at: datetime
 
 
-class ChallengeResourceResponse(BaseModel):
+class ResourceResponse(BaseModel):
     id: UUID
-    challenge_id: UUID
+    challenge_id: UUID | None = None
     uploader_id: UUID
     title: str
     description: str | None

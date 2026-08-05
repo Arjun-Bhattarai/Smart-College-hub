@@ -6,8 +6,6 @@ from sqlmodel.ext.asyncio.session import AsyncSession
 from uuid import UUID, uuid4
 
 from app.models.coding_challenge import CodingChallenge
-from app.models.challenge_resource import ChallengeResource
-from app.models.challenge_resource_request import ChallengeResourceRequest
 from app.models.submission import Submission
 from app.repositories.coding_challenge_repository import ChallengeRepository
 from app.repositories.submission_repository import SubmissionRepository
@@ -19,7 +17,7 @@ class ChallengeService:
     def __init__(self):
         self.challenge_repo = ChallengeRepository()
         self.submission_repo = SubmissionRepository()
-        self.upload_root = Path(__file__).resolve().parent.parent.parent / "uploads" / "resources"
+      
 
     async def create_challenge(
         self,
@@ -157,76 +155,4 @@ class ChallengeService:
             challenge,
         )
 
-    async def create_resource_request(
-        self,
-        session: AsyncSession,
-        challenge_id: UUID,
-        requester_id: UUID,
-        message: str,
-    ):
-        db_request = ChallengeResourceRequest(
-            challenge_id=challenge_id,
-            requester_id=requester_id,
-            message=message,
-        )
-
-        return await self.challenge_repo.create_resource_request(
-            session,
-            db_request,
-        )
-
-    async def list_resource_requests(
-        self,
-        session: AsyncSession,
-        challenge_id: UUID,
-    ):
-        return await self.challenge_repo.list_resource_requests_by_challenge(
-            session,
-            challenge_id,
-        )
-
-    async def upload_resource(
-        self,
-        session: AsyncSession,
-        challenge_id: UUID,
-        uploader_id: UUID,
-        title: str,
-        description: str | None,
-        original_file_name: str,
-        content: bytes,
-    ):
-        safe_name = Path(original_file_name or "resource").name
-        safe_name = re.sub(r"[^A-Za-z0-9._-]", "_", safe_name)
-        stored_file_name = f"{uuid4()}_{safe_name}"
-
-        destination_dir = self.upload_root / str(challenge_id)
-        destination_dir.mkdir(parents=True, exist_ok=True)
-
-        destination_file = destination_dir / stored_file_name
-        destination_file.write_bytes(content)
-
-        file_path = f"resources/{challenge_id}/{stored_file_name}"
-
-        db_resource = ChallengeResource(
-            challenge_id=challenge_id,
-            uploader_id=uploader_id,
-            title=title,
-            description=description,
-            file_name=safe_name,
-            file_path=file_path,
-        )
-
-        return await self.challenge_repo.create_resource(
-            session,
-            db_resource,
-        )
-
-    async def list_resources(
-        self,
-        session: AsyncSession,
-        challenge_id: UUID,
-    ):
-        return await self.challenge_repo.list_resources_by_challenge(
-            session,
-            challenge_id,
-        )
+ 

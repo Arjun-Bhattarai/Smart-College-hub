@@ -5,6 +5,7 @@ import { useAuth } from "@/lib/auth-context";
 const STUDENT_NAV = [
   { to: "/dashboard", label: "Dashboard", auth: true },
   { to: "/challenges", label: "Challenges", auth: false },
+  { to: "/resources", label: "Resources", auth: false },
   { to: "/collaborations", label: "Teams", auth: false },
   { to: "/leaderboard", label: "Leaderboard", auth: false },
 ];
@@ -13,6 +14,7 @@ const ADMIN_NAV = [
   { to: "/admin", label: "Overview" },
   { to: "/admin/users", label: "Users" },
   { to: "/admin/challenges", label: "Challenges" },
+  { to: "/resources", label: "Resources" },
   { to: "/admin/submissions", label: "Reviews" },
   { to: "/admin/collaborations", label: "Teams" },
   { to: "/leaderboard", label: "Leaderboard" },

@@ -5,6 +5,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 import { Route as rootRouteImport } from './routes/__root';
 import { Route as SignupRouteImport } from './routes/signup';
+import { Route as ResourcesIndexRouteImport } from './routes/resources.index';
 import { Route as ProfileRouteImport } from './routes/profile';
 import { Route as MySubmissionsRouteImport } from './routes/my-submissions';
 import { Route as LoginRouteImport } from './routes/login';
@@ -30,6 +31,11 @@ import { Route as AdminChallengesChallengeIdEditRouteImport } from './routes/adm
 const SignupRoute = SignupRouteImport.update({
     id: '/signup',
     path: '/signup',
+    getParentRoute: () => rootRouteImport,
+});
+const ResourcesIndexRoute = ResourcesIndexRouteImport.update({
+    id: '/resources/',
+    path: '/resources/',
     getParentRoute: () => rootRouteImport,
 });
 const ProfileRoute = ProfileRouteImport.update({
@@ -149,6 +155,7 @@ const rootRouteChildren = {
     LoginRoute: LoginRoute,
     MySubmissionsRoute: MySubmissionsRoute,
     ProfileRoute: ProfileRoute,
+    ResourcesIndexRoute: ResourcesIndexRoute,
     SignupRoute: SignupRoute,
     ChallengesChallengeIdRoute: ChallengesChallengeIdRoute,
     CollaborationsNewRoute: CollaborationsNewRoute,

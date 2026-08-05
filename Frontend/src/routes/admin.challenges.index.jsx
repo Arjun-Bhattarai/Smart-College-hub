@@ -44,12 +44,12 @@ function AdminChallenges() {
 
     const requestsQ = useQuery({
       queryKey: ["challenge-resource-requests", selectedChallenge],
-      queryFn: () => api(`/challenges/${selectedChallenge}/resource-requests`),
+      queryFn: () => api(`/resources/${selectedChallenge}/resource-requests`),
       enabled: isAdmin && !!selectedChallenge,
     });
     const resourcesQ = useQuery({
       queryKey: ["challenge-resources", selectedChallenge],
-      queryFn: () => api(`/challenges/${selectedChallenge}/resources`),
+      queryFn: () => api(`/resources/${selectedChallenge}/resources`),
       enabled: isAdmin && !!selectedChallenge,
     });
     const filtered = useMemo(() => {
@@ -72,7 +72,7 @@ function AdminChallenges() {
         onError: (e) => show(e instanceof ApiError ? e.message : "Delete failed", "error"),
     });
     const requestResource = useMutation({
-        mutationFn: () => api(`/challenges/${selectedChallenge}/resource-requests`, {
+        mutationFn: () => api(`/resources/${selectedChallenge}/resource-requests`, {
             method: "POST",
             auth: true,
             body: { message: requestMessage },
@@ -92,7 +92,7 @@ function AdminChallenges() {
             formData.append("title", uploadTitle);
             formData.append("description", uploadDescription);
             formData.append("file", uploadFile);
-            return api(`/challenges/${selectedChallenge}/resources/upload`, {
+            return api(`/resources/${selectedChallenge}/resources/upload`, {
                 method: "POST",
                 auth: true,
                 body: formData,
