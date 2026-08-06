@@ -23,7 +23,7 @@ class AuthService:
     async def get_user_by_id(
         self,
         user_id: UUID,
-        session: AsyncSession,
+        session: AsyncSession,  
     ):
         statement = select(User).where(User.uid == user_id)
         result = await session.exec(statement)
@@ -99,3 +99,21 @@ class AuthService:
         await session.refresh(user)
 
         return {"message": "User disabled successfully"}
+
+    async def enable_user(
+        self,
+        user_id: UUID,
+        session: AsyncSession,
+    ):
+        user = await self.get_user_by_id(user_id, session)
+
+        if not user:
+            raise HTTPException(status_code=404, detail="User not found")
+
+        user.is_active = True
+
+        session.add(user)
+        await session.commit()
+        await session.refresh(user)
+
+        return {"message": "User enabled successfully"}

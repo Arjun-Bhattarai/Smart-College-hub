@@ -104,3 +104,12 @@ async def disable_user(
     current_user: User = Depends(RoleChecker(["admin"])),
 ):
     return await auth_service.disable_user(user_id, session)
+
+
+@auth_router.patch("/users/{user_id}/enable")
+async def enable_user(
+    user_id: UUID,
+    session: AsyncSession = Depends(get_session),
+    current_user: User = Depends(RoleChecker(["admin"])),
+):
+    return await auth_service.enable_user(user_id, session)
