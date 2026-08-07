@@ -4,12 +4,14 @@
 
 @custom-variant dark (&:is(.dark *));
 
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --radius-2xl: calc(var(--radius) + 8px);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-surface: var(--surface);
@@ -35,23 +37,24 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+
   --font-sans: "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
   --font-display: "Inter", system-ui, sans-serif;
 }
 
+
 :root {
   --radius: 0.75rem;
-  /* Warm paper canvas + deep ink */
-  --background: hsl(38 30% 96%);
-  --surface: hsl(38 26% 93%);
+
+  --background: hsl(360, 100%, 100%);
+  --surface: hsl(0, 0%, 100%);
   --foreground: hsl(224 30% 10%);
-  --card: hsl(0 0% 100%);
+  --card: hsl(0, 0%, 100%);
   --card-foreground: hsl(224 30% 10%);
   --popover: hsl(0 0% 100%);
   --popover-foreground: hsl(224 30% 10%);
-  /* Deep indigo primary */
-  --primary: hsl(232 62% 32%);
+  --primary: hsl(118, 62%, 32%);
   --primary-foreground: hsl(38 40% 97%);
   --primary-hover: hsl(232 62% 24%);
   --secondary: hsl(38 20% 90%);
@@ -60,7 +63,6 @@
   --muted-foreground: hsl(224 12% 38%);
   --accent: hsl(38 20% 90%);
   --accent-foreground: hsl(224 30% 10%);
-  /* Warm accent palette */
   --accent-green: hsl(158 55% 32%);
   --accent-amber: hsl(30 88% 48%);
   --accent-red: hsl(4 72% 48%);
@@ -71,32 +73,58 @@
   --input: hsl(224 20% 12% / 0.12);
   --ring: hsl(232 62% 32%);
 
-  /* Signature effects */
   --gradient-primary: linear-gradient(135deg, hsl(232 62% 32%) 0%, hsl(268 55% 38%) 100%);
   --gradient-warm: linear-gradient(135deg, hsl(30 88% 48%) 0%, hsl(4 72% 48%) 100%);
   --gradient-hero: radial-gradient(1200px 600px at 10% -10%, hsl(232 62% 32% / 0.10), transparent 60%),
-                   radial-gradient(900px 500px at 100% 0%, hsl(30 88% 48% / 0.08), transparent 55%);
+    radial-gradient(900px 500px at 100% 0%, hsl(30 88% 48% / 0.08), transparent 55%);
+
   --shadow-sm: 0 1px 2px hsl(224 30% 10% / 0.04), 0 1px 1px hsl(224 30% 10% / 0.03);
   --shadow-card: 0 1px 2px hsl(224 30% 10% / 0.04), 0 8px 24px -12px hsl(224 30% 10% / 0.08);
   --shadow-elevated: 0 4px 12px -4px hsl(224 30% 10% / 0.10), 0 24px 48px -16px hsl(224 30% 10% / 0.16);
   --shadow-glow: 0 0 0 1px hsl(232 62% 32% / 0.10), 0 20px 40px -20px hsl(232 62% 32% / 0.35);
 }
 
+
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-@keyframes shimmer {
-  0%   { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@utility animate-slide-up  { animation: slideUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) both; }
-@utility animate-fade-in   { animation: fadeIn 0.4s ease-out both; }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+
+@utility animate-slide-up {
+  animation: slideUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@utility animate-fade-in {
+  animation: fadeIn 0.4s ease-out both;
+}
 
 @utility grid-paper {
   background-image:
@@ -104,6 +132,7 @@
     linear-gradient(to bottom, hsl(224 20% 12% / 0.04) 1px, transparent 1px);
   background-size: 32px 32px;
 }
+
 @utility grid-paper-fade {
   background-image:
     linear-gradient(to right, hsl(224 20% 12% / 0.05) 1px, transparent 1px),
@@ -111,21 +140,49 @@
   background-size: 40px 40px;
   mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 40%, transparent 100%);
 }
-@utility bg-hero { background-image: var(--gradient-hero); }
-@utility bg-gradient-primary { background-image: var(--gradient-primary); }
-@utility bg-gradient-warm { background-image: var(--gradient-warm); }
-@utility shadow-card     { box-shadow: var(--shadow-card); }
-@utility shadow-elevated { box-shadow: var(--shadow-elevated); }
-@utility shadow-glow     { box-shadow: var(--shadow-glow); }
+
+@utility bg-hero {
+  background-image: var(--gradient-hero);
+}
+
+@utility bg-gradient-primary {
+  background-image: var(--gradient-primary);
+}
+
+@utility bg-gradient-warm {
+  background-image: var(--gradient-warm);
+}
+
+@utility shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+@utility shadow-elevated {
+  box-shadow: var(--shadow-elevated);
+}
+
+@utility shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
 
 @layer base {
-  * { border-color: var(--color-border); }
-  html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     font-feature-settings: "cv02", "cv03", "cv04", "ss01";
   }
-  ::selection { background: hsl(232 62% 32% / 0.18); }
+
+  ::selection {
+    background: hsl(232 62% 32% / 0.18);
+  }
 }

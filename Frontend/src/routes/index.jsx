@@ -8,6 +8,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  
   const { isAuthenticated, loading } = useAuth();
   if (loading) return <LoadingState />;
   if (isAuthenticated) return <Navigate to="/dashboard" replace />;
