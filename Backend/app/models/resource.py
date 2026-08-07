@@ -5,7 +5,7 @@ from sqlmodel import Field, SQLModel
 
 
 class Resource(SQLModel, table=True):
-    __tablename__ = "challenge_resources"
+    __tablename__ = "resources"
 
     id: UUID = Field(
         default_factory=uuid4,

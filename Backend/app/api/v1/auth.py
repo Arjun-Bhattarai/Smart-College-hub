@@ -6,9 +6,10 @@ from app.schemas.user_schema import UserCreate, UserLogin, UserResponse
 from app.services.auth_service import AuthService
 from app.db.session import get_session
 from app.core.security import create_access_token, verify_password
-from app.dependencies.auth import AccessTokenBearer, get_current_user, RoleChecker
+from app.dependencies.auth import AccessTokenBearer, RefreshTokenBearer, get_current_user, RoleChecker
 from app.db.redis import add_jti_to_blocklist
 from app.dependencies.collaboration import get_collaboration_service
+from uuid import UUID
 
 auth_router = APIRouter()
 auth_service = AuthService()
@@ -95,7 +96,7 @@ async def get_users(
     return await auth_service.get_all_users(session)
 
 
-from uuid import UUID
+
 
 @auth_router.patch("/users/{user_id}/disable")
 async def disable_user(
