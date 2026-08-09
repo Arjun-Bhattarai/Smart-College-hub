@@ -12,7 +12,7 @@ class Resource(SQLModel, table=True):
         primary_key=True,
     )
 
-    challenge_id: UUID | None = Field(
+    resource_id: UUID | None = Field(
         default=None,
         foreign_key="coding_challenges.id",
         index=True,

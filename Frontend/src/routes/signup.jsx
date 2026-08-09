@@ -18,7 +18,7 @@ function SignupPage() {
     password: "",
     first_name: "",
     last_name: "",
-    title: "",
+    title: "",navigate
   });
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -33,12 +33,9 @@ function SignupPage() {
     setLoading(true);
     try {
       await signup(form);
-      try {
-        await login(form.email, form.password);
-        navigate({ to: "/dashboard", replace: true });
-      } catch {
+      
         navigate({ to: "/login", replace: true });
-      }
+      
     } catch (err) {
       setError(err instanceof ApiError ? err.message : "Signup failed. Please review the form.");
     } finally {
