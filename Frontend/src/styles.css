@@ -1,90 +1,188 @@
+/* Tailwind ra animation import */
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
 
+/* Dark mode ko custom variant */
 @custom-variant dark (&:is(.dark *));
 
 
+/* Theme ko basic settings */
 @theme inline {
+  /* Border radius */
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --radius-2xl: calc(var(--radius) + 8px);
 
+  /* Main colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-surface: var(--surface);
+
+  /* Card ko colors */
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
+
+  /* Popup ko colors */
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
+
+  /* Primary color */
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+
+  /* Primary hover color */
   --color-primary-hover: var(--primary-hover);
+
+  /* Secondary color */
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
+
+  /* Muted color */
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
+
+  /* Accent colors */
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent-green: var(--accent-green);
   --color-accent-amber: var(--accent-amber);
   --color-accent-red: var(--accent-red);
   --color-accent-plum: var(--accent-plum);
+
+  /* Error / destructive color */
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
+
+  /* Border ra input colors */
   --color-border: var(--border);
   --color-input: var(--input);
+
+  /* Focus ring ko color */
   --color-ring: var(--ring);
 
+  /* Font settings */
   --font-sans: "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
   --font-display: "Inter", system-ui, sans-serif;
 }
 
 
+/* Main color variables */
 :root {
+  /* Default radius */
   --radius: 0.75rem;
 
+  /* Main background */
   --background: hsl(360, 100%, 100%);
+
+  /* Surface ko color */
   --surface: hsl(0, 0%, 100%);
+
+  /* Main text color */
   --foreground: hsl(224 30% 10%);
+
+  /* Card ko color */
   --card: hsl(0, 0%, 100%);
   --card-foreground: hsl(224 30% 10%);
-  --popover: hsl(0 0% 100%);
+
+  /* Popup ko color */
+  --popover: hsl(0, 91%, 49%);
   --popover-foreground: hsl(224 30% 10%);
-  --primary: hsl(118, 62%, 32%);
+
+  /* Main brand color */
+  --primary: hsl(234, 47%, 29%);
+
+  /* Primary text ko color */
   --primary-foreground: hsl(38 40% 97%);
-  --primary-hover: hsl(232 62% 24%);
-  --secondary: hsl(38 20% 90%);
+
+  /* Primary hover ko color */
+  --primary-hover: hsl(120, 67%, 88%);
+
+  /* Secondary / hover background */
+  --secondary: hsl(180, 77%, 92%);
   --secondary-foreground: hsl(224 30% 10%);
+
+  /* Muted / halka text */
   --muted: hsl(224 12% 42%);
   --muted-foreground: hsl(224 12% 38%);
+
+  /* General accent */
   --accent: hsl(38 20% 90%);
   --accent-foreground: hsl(224 30% 10%);
+
+  /* Different accent colors */
   --accent-green: hsl(158 55% 32%);
   --accent-amber: hsl(30 88% 48%);
   --accent-red: hsl(4 72% 48%);
   --accent-plum: hsl(340 55% 40%);
+
+  /* Error / delete color */
   --destructive: hsl(4 72% 48%);
   --destructive-foreground: hsl(0 0% 100%);
+
+  /* Border ra input */
   --border: hsl(224 20% 12% / 0.10);
   --input: hsl(224 20% 12% / 0.12);
+
+  /* Focus ring */
   --ring: hsl(232 62% 32%);
 
-  --gradient-primary: linear-gradient(135deg, hsl(232 62% 32%) 0%, hsl(268 55% 38%) 100%);
-  --gradient-warm: linear-gradient(135deg, hsl(30 88% 48%) 0%, hsl(4 72% 48%) 100%);
-  --gradient-hero: radial-gradient(1200px 600px at 10% -10%, hsl(232 62% 32% / 0.10), transparent 60%),
-    radial-gradient(900px 500px at 100% 0%, hsl(30 88% 48% / 0.08), transparent 55%);
 
-  --shadow-sm: 0 1px 2px hsl(224 30% 10% / 0.04), 0 1px 1px hsl(224 30% 10% / 0.03);
-  --shadow-card: 0 1px 2px hsl(224 30% 10% / 0.04), 0 8px 24px -12px hsl(224 30% 10% / 0.08);
-  --shadow-elevated: 0 4px 12px -4px hsl(224 30% 10% / 0.10), 0 24px 48px -16px hsl(224 30% 10% / 0.16);
-  --shadow-glow: 0 0 0 1px hsl(232 62% 32% / 0.10), 0 20px 40px -20px hsl(232 62% 32% / 0.35);
+
+  /* Primary gradient nav bar ko color change gernay after click */
+  --gradient-primary: linear-gradient(
+    135deg,
+    hsl(232 62% 32%) 0%,
+    hsl(268 55% 38%) 100%
+  );
+
+  /* Warm gradient */
+  --gradient-warm: linear-gradient(
+    135deg,
+    hsl(30 88% 48%) 0%,
+    hsl(4 72% 48%) 100%
+  );
+
+  /* Hero section ko background */
+  --gradient-hero:
+    radial-gradient(
+      1200px 600px at 10% -10%,
+      hsl(232 62% 32% / 0.10),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 500px at 100% 0%,
+      hsl(30 88% 48% / 0.08),
+      transparent 55%
+    );
+
+
+  /* Small shadow */
+  --shadow-sm:
+    0 1px 2px hsl(224 30% 10% / 0.04),
+    0 1px 1px hsl(224 30% 10% / 0.03);
+
+  /* Card ko shadow */
+  --shadow-card:
+    0 1px 2px hsl(224 30% 10% / 0.04),
+    0 8px 24px -12px hsl(224 30% 10% / 0.08);
+
+  /* Thulo / elevated shadow */
+  --shadow-elevated:
+    0 4px 12px -4px hsl(224 30% 10% / 0.10),
+    0 24px 48px -16px hsl(224 30% 10% / 0.16);
+
+  /* Glow effect */
+  --shadow-glow:
+    0 0 0 1px hsl(232 62% 32% / 0.10),
+    0 20px 40px -20px hsl(232 62% 32% / 0.35);
 }
 
 
+/* Slide up animation */
 @keyframes slideUp {
   from {
     opacity: 0;
@@ -97,6 +195,8 @@
   }
 }
 
+
+/* Fade in animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -107,6 +207,8 @@
   }
 }
 
+
+/* Loading shimmer animation */
 @keyframes shimmer {
   0% {
     background-position: -200% 0;
@@ -118,63 +220,113 @@
 }
 
 
+/* Slide-up utility */
 @utility animate-slide-up {
   animation: slideUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+
+/* Fade-in utility */
 @utility animate-fade-in {
   animation: fadeIn 0.4s ease-out both;
 }
 
+
+/* Grid background */
 @utility grid-paper {
   background-image:
-    linear-gradient(to right, hsl(224 20% 12% / 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, hsl(224 20% 12% / 0.04) 1px, transparent 1px);
+    linear-gradient(
+      to right,
+      hsl(224 20% 12% / 0.04) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      hsl(224 20% 12% / 0.04) 1px,
+      transparent 1px
+    );
+
   background-size: 32px 32px;
 }
 
+
+/* Faded grid background */
 @utility grid-paper-fade {
   background-image:
-    linear-gradient(to right, hsl(224 20% 12% / 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, hsl(224 20% 12% / 0.05) 1px, transparent 1px);
+    linear-gradient(
+      to right,
+      hsl(224 20% 12% / 0.05) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      hsl(224 20% 12% / 0.05) 1px,
+      transparent 1px
+    );
+
   background-size: 40px 40px;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 40%, transparent 100%);
+
+  /* Grid lai gradually fade garne */
+  mask-image:
+    radial-gradient(
+      ellipse 80% 60% at 50% 40%,
+      black 40%,
+      transparent 100%
+    );
 }
 
+
+/* Hero background utility */
 @utility bg-hero {
   background-image: var(--gradient-hero);
 }
 
+
+/* Primary gradient utility */
 @utility bg-gradient-primary {
   background-image: var(--gradient-primary);
 }
 
+
+/* Warm gradient utility */
 @utility bg-gradient-warm {
   background-image: var(--gradient-warm);
 }
 
+
+/* Card shadow utility */
 @utility shadow-card {
   box-shadow: var(--shadow-card);
 }
 
+
+/* Elevated shadow utility */
 @utility shadow-elevated {
   box-shadow: var(--shadow-elevated);
 }
 
+
+/* Glow shadow utility */
 @utility shadow-glow {
   box-shadow: var(--shadow-glow);
 }
 
+
+/* Base styles */
 @layer base {
+
+  /* Sabai element ko border color */
   * {
     border-color: var(--color-border);
   }
 
+  /* Browser text rendering */
   html {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
 
+  /* Body ko default styling */
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
@@ -182,7 +334,8 @@
     font-feature-settings: "cv02", "cv03", "cv04", "ss01";
   }
 
+  /* Text select garda dekhaune color */
   ::selection {
-    background: hsl(232 62% 32% / 0.18);
+    background: hsla(347, 98%, 47%, 0.18);
   }
 }

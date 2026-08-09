@@ -15,6 +15,7 @@ class CollaborationJoinRequest(SQLModel, table=True):
     collaboration_id: UUID = Field(
         foreign_key="collaborations.id",
         index=True,
+        ondelete="CASCADE"
     )
 
     user_id: UUID = Field(

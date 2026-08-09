@@ -20,6 +20,7 @@ function Landing() {
     <div className="min-h-screen bg-background text-foreground font-sans overflow-hidden">
       <nav className="sticky top-0 z-50 border-b border-border/70 bg-background/75 backdrop-blur-2xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+
           <Link to="/" className="shrink-0">
             <BrandMark />
           </Link>

@@ -1,9 +1,11 @@
-from uuid import UUID
-from fastapi import HTTPException
 
+from uuid import UUID
+
+from fastapi import HTTPException
 from sqlmodel import select
 from sqlmodel.ext.asyncio.session import AsyncSession
 
+from app.db import session
 from app.core.security import generate_password_hash
 from app.models.user import User
 from app.schemas.user_schema import UserCreate
@@ -23,7 +25,7 @@ class AuthService:
     async def get_user_by_id(
         self,
         user_id: UUID,
-        session: AsyncSession,  
+        session: AsyncSession,
     ):
         statement = select(User).where(User.uid == user_id)
         result = await session.exec(statement)
@@ -90,7 +92,16 @@ class AuthService:
         user = await self.get_user_by_id(user_id, session)
 
         if not user:
-            raise HTTPException(status_code=404, detail="User not found")
+            raise HTTPException(
+                status_code=404,
+                detail="User not found",
+            )
+
+        if user.role.lower() == "admin":
+            raise HTTPException(
+                status_code=403,
+                detail="Admins cannot disable another admin",
+            )
 
         user.is_active = False
 
@@ -108,7 +119,16 @@ class AuthService:
         user = await self.get_user_by_id(user_id, session)
 
         if not user:
-            raise HTTPException(status_code=404, detail="User not found")
+            raise HTTPException(
+                status_code=404,
+                detail="User not found",
+            )
+
+        if user.role.lower() == "admin":
+            raise HTTPException(
+                status_code=403,
+                detail="Admins cannot modify another admin",
+            )
 
         user.is_active = True
 
@@ -117,3 +137,4 @@ class AuthService:
         await session.refresh(user)
 
         return {"message": "User enabled successfully"}
+
